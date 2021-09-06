@@ -35,29 +35,29 @@ SET COMANDOPERS=
 
 REM Definimos la primer ventana del script, que permite establecer si ADB esta descargado
 
-:: Chequear si ADB está disponible, y de lo contrario llevar a descargar
+:: Chequear si ADB estÃ¡ disponible, y de lo contrario llevar a descargar
 adb.exe /? >NUL 2>&1
 IF ERRORLEVEL 1 (
-	SET ADBDISPONIBLE=No
+    SET ADBDISPONIBLE=No
     ECHO -------------------------------------------------------------------------------------------------------
-	ECHO Este script requiere que esten instalados en el sistema los binarios de ADB y Fastboot.
-	SET /P DESCARGA="Desea instalarlos ahora? [S/N] "
+    ECHO Este script requiere que esten instalados en el sistema los binarios de ADB y Fastboot.
+    SET /P DESCARGA="Desea instalarlos ahora? [S/N] "
 )
 
 :: Si se confirma la eleccion, iniciar la descarga
 IF /I "!DESCARGA!"=="S" (
     START https://dl.google.com/android/repository/platform-tools-latest-windows.zip
-	ECHO.
-	ECHO Descargue el archivo y descomprimalo. Luego, incluya la carpeta resultante en su variable PATH o, copie
+    ECHO.
+    ECHO Descargue el archivo y descomprimalo. Luego, incluya la carpeta resultante en su variable PATH o, copie
     ECHO el script a su carpeta "platform-tools" e inicielo desde ahi.
     ECHO -------------------------------------------------------------------------------------------------------
-	PAUSE
+    PAUSE
 )
 
 :: Abortar la operacion si los binarios no estan instalados
 IF "!ADBDISPONIBLE!"=="No" GOTO:EOF
 
-REM Definimos el menú principal del script
+REM Definimos el menÃº principal del script
 
 :MENU
 CLS
