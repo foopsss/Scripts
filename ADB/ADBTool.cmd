@@ -33,6 +33,10 @@ SET ID=
 SET CLAVE=
 SET COMANDOPERS=
 
+SET ARCHIVO1=!USERPROFILE!\Desktop\Apps.txt
+SET ARCHIVO2=!USERPROFILE!\Desktop\AppsDes.txt
+SET ARCHIVO3=!USERPROFILE!\Desktop\AppsClave.txt
+
 REM Definimos la primer ventana del script, que permite establecer si ADB esta descargado
 
 :: Chequear si ADB está disponible, y de lo contrario llevar a descargar
@@ -530,9 +534,9 @@ IF !CHOICE!==4 GOTO MENU
           PAUSE
 
           ECHO.
-          adb shell pm list packages -f > !USERPROFILE!\Desktop\Aplicaciones.txt
-          if exist !USERPROFILE!\Desktop\Aplicaciones.txt (
-             ECHO El archivo "Aplicaciones.txt" se encuentra en el escritorio.
+          adb shell pm list packages -f > !ARCHIVO1!
+          if exist !ARCHIVO1! (
+             ECHO El archivo se encuentra en el escritorio.
           )
           ECHO.
              
@@ -550,9 +554,9 @@ IF !CHOICE!==4 GOTO MENU
           PAUSE
 
           ECHO.
-          adb shell pm list packages -d -f > !USERPROFILE!\Desktop\AppDes.txt
-          if exist !USERPROFILE!\Desktop\AppDes.txt (
-             ECHO El archivo "AppDes.txt" se encuentra en el escritorio.
+          adb shell pm list packages -d -f > !ARCHIVO2!
+          if exist !ARCHIVO2! (
+             ECHO El archivo se encuentra en el escritorio.
           )
           ECHO.
              
@@ -569,9 +573,9 @@ IF !CHOICE!==4 GOTO MENU
           ECHO.
 
           SET /P CLAVE="Palabra clave: "
-          adb shell pm list packages -f "!CLAVE!" > !USERPROFILE!\Desktop\!CLAVE!.txt
-          if exist !USERPROFILE!\Desktop\!CLAVE!.txt (
-             ECHO El archivo "!CLAVE!.txt" se encuentra en el escritorio.
+          adb shell pm list packages -f "!CLAVE!" > !ARCHIVO3!
+          if exist !ARCHIVO3! (
+             ECHO El archivo se encuentra en el escritorio.
           )
           ECHO.
 
