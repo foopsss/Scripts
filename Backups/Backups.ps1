@@ -1,4 +1,9 @@
-﻿<# Definimos la función para cambiar el tamaño de la ventana de Powershell #>
+﻿<# Código Extra
+"Write-Host "Presione cualquier tecla para salir" -ForegroundColor Red"
+"$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")"
+#>
+
+<# Definimos la función para cambiar el tamaño de la ventana de Powershell #>
 
     [CmdletBinding()]
     Param(
@@ -77,9 +82,9 @@ function Show-Menu {
 
 $wd = Get-Location
 $github = 'https://github.com/foopsss/hosts/archive/refs/heads/master.zip'
-$github1 = 'https://github.com/foopsss/Scripts/archive/refs/heads/main.zip' 
+$github1 = 'https://github.com/foopsss/scripts/archive/refs/heads/main.zip' 
 $liben = 'C:\Users\liben\OneDrive\Backups\Zips'
-$Lucas = 'C:\Users\Lucas\OneDrive\Backups\Zips'
+$LUCAS3 = 'G:\Backup\Software\Scripts\'
 $minecraft = 'J:\Minecraft\Juego\.minecraft\saves\Lucas3\*'
 $bo3modtoolsmaps = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\zm\'
 $bo3modtoolsprefabs = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\_prefabs\Own Prefabs\'
@@ -101,17 +106,12 @@ do
 
     '1' {
 
-    CLS
+    Clear-Host
     Write-Host "¡Extrayendo contenido de la página y creando archivo .zip!" -ForegroundColor Red
-    Invoke-WebRequest -Uri "$github" -OutFile "$wd\Zips\hosts.zip" 
+    Invoke-WebRequest -Uri "$github" -OutFile "$wd\Zips\Hosts.zip"
+    Copy-Item "$wd\Zips\Hosts.zip" -Destination "$liben\Hosts.zip" -Force
 
-    if (Test-Path -Path $liben) {
-      Copy-Item "$wd\Zips\hosts.zip" -Destination "$liben\hosts.zip" -Force
-     } elseif (Test-Path -Path $Lucas) {
-      Copy-Item "$wd\Zips\hosts.zip" -Destination "$Lucas\hosts.zip" -Force
-     }
-
-    if (Test-Path -Path $wd\Zips\hosts.zip -PathType Leaf) {
+    if (Test-Path -Path $wd\Zips\Hosts.zip -PathType Leaf) {
      Write-Host "¡Archivo creado!" -ForegroundColor Green
     }
 
@@ -119,24 +119,19 @@ do
 
     '2' {
 
-    CLS
+    Clear-Host
     Write-Host "¡Extrayendo contenido de la página y creando archivo .zip!" -ForegroundColor Red
-    Invoke-WebRequest -Uri "$github1" -OutFile "$wd\Zips\scripts.zip" 
+    Invoke-WebRequest -Uri "$github1" -OutFile "$LUCAS3\Scripts.zip"
+    Copy-Item "$LUCAS3\Scripts.zip" -Destination "$liben\Scripts.zip" -Force
 
-    if (Test-Path -Path $liben) {
-      Copy-Item "$wd\Zips\scripts.zip" -Destination "$liben\scripts.zip" -Force
-     } elseif (Test-Path -Path $Lucas) {
-      Copy-Item "$wd\Zips\scripts.zip" -Destination "$Lucas\scripts.zip" -Force
-     }
-
-    if (Test-Path -Path $wd\Zips\scripts.zip -PathType Leaf) {
+    if (Test-Path -Path "$LUCAS3\Scripts.zip", "$liben\Scripts.zip" -PathType Leaf) {
      Write-Host "¡Archivo creado!" -ForegroundColor Green
     }
 
     }
 
     '3' {
-    CLS
+    Clear-Host
     Write-Host "¡Creando archivo .zip!"  -ForegroundColor Red
     Compress-Archive -Path "$minecraft" -DestinationPath "$wd\Zips\Lucas3.zip" -Update
     Copy-Item "$wd\Zips\Lucas3.zip" -Destination "$liben\Lucas3.zip" -Force
@@ -148,7 +143,7 @@ do
     }
 
     '4' {
-    CLS
+    Clear-Host
     Write-Host "¡Creando archivo .zip!"  -ForegroundColor Red
     Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$wd\Zips\Black Ops III Mod Tools.zip" -Update
     Copy-Item "$wd\Zips\Black Ops III Mod Tools.zip" -Destination "$liben\Black Ops III Mod Tools.zip" -Force
@@ -166,12 +161,7 @@ do
 
     Write-Host "Presione una tecla para salir." -ForegroundColor Yellow
     [void][System.Console]::ReadKey($FALSE)
-    CLS
-
-    <# Otra función para suspender el script
-    "$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")"
-    #>
-
+    Clear-Host
  }
 
 <# Hasta que la opción elegida sea 5 el script sigue funcionando #>
