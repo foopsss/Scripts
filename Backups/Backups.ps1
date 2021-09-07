@@ -180,11 +180,23 @@ until ($selection -eq '5')
 
 <# Créditos
 •Adam Bertram/adamtheautomator.com - Código para el título del script, el menú, las funciones, y para chequear si existe un archivo.
+ (https://adamtheautomator.com/powershell-menu/)
 •Adam Gordon/blog.itpro.tv - Código para obtener la fecha y la hora.
+ (https://blog.itpro.tv/get-date-powershell-cmdlet/)
 •SS64.com - Código para pausar el script y para cambiar el tamaño de la ventana.
-•June Castillote/adamtheautomator.com - Código para descargar un archivo de Internet.
-•Microsoft Docs - Código para crear un archivo .zip a partir de una carpeta, copiar archivos, chequear si existe una carpeta y declarar variables.
+ (https://ss64.com/ps/syntax-consolesize.html)
+ (https://ss64.com/ps/pause.html)
+•Michael Pietroforte/4sysops.com - Código para descargar un archivo de Internet.
+ (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
+•Microsoft Docs/PowerShell Community - Código para crear un archivo .zip a partir de una carpeta, copiar archivos, chequear si existe una carpeta y declarar variables.
+ (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.1)
+ (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1)
+ (https://devblogs.microsoft.com/powershell-community/determine-if-a-folder-exists/)
+ (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables?view=powershell-7.1)
 •shelladmin/shellgeek.com - Código para conseguir la ruta del directorio en el que se encuentra el script.
+ (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
 •www.tutorialspoint.com - Código para las declaraciones if/elseif, y para crear o eliminar un directorio.
+ (https://www.tutorialspoint.com/powershell/if_else_statement_in_powershell.htm)
 •Karim Buzdar/www.faqforge.com - Código para realizar comentarios en el código.
+ (https://www.faqforge.com/powershell/comment-code-powershell/)
 #>
