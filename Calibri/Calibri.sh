@@ -1,3 +1,5 @@
+# Defining script interpreter.
+
 #!/bin/bash
 
 echo "Installing fonts..."
