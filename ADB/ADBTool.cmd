@@ -2,24 +2,24 @@ REM Turn off echo-ing
 
 @ECHO OFF
 
-REM Definimos algunas propiedades de la ventana
+REM Defino propiedades de la ventana
 
 TITLE Herramienta de ADB y Fastboot
 COLOR 17
 MODE 105,38
 
-REM Definimos los sistemas en los que no puede correr el script
+REM Defino los sistemas en los que no puede correr el script
 
 :: Chequear si se corre Windows XP
 VER | FIND "Windows XP" >NUL && GOTO DONTRUN
 :: Chequear si se corre Windows 2000
 VER | FIND "Windows 2000" >NUL && GOTO DONTRUN
 
-REM Definimos una propiedad para evitar una vulnerabilidad con el comando SET
+REM Defino una propiedad para evitar una vulnerabilidad con el comando SET
 
 SETLOCAL EnableDelayedExpansion
 
-REM Inicializar las variables a usar en todo el script
+REM Inicializo las variables a usar en todo el script
 
 SET ADBDISPONIBLE=
 SET DESCARGA=
@@ -37,9 +37,9 @@ SET ARCHIVO1=!USERPROFILE!\Desktop\Apps.txt
 SET ARCHIVO2=!USERPROFILE!\Desktop\AppsDes.txt
 SET ARCHIVO3=!USERPROFILE!\Desktop\AppsClave.txt
 
-REM Definimos la primer ventana del script, que permite establecer si ADB esta descargado
+REM Defino la primer ventana del script, que permite establecer si ADB esta descargado
 
-:: Chequear si ADB está disponible, y de lo contrario llevar a descargar
+:: Chequear si ADB esta disponible, y de lo contrario llevar a descargar
 adb.exe /? >NUL 2>&1
 IF ERRORLEVEL 1 (
     SET ADBDISPONIBLE=No
@@ -61,7 +61,7 @@ IF /I "!DESCARGA!"=="S" (
 :: Abortar la operacion si los binarios no estan instalados
 IF "!ADBDISPONIBLE!"=="No" GOTO:EOF
 
-REM Definimos el menú principal del script
+REM Defino el menu de opciones a utilizar
 
 :MENU
 CLS
@@ -102,12 +102,12 @@ ECHO 11. Creditos.
 ECHO 12. SALIR.
 ECHO.
 
-REM Definimos las opciones para el script
-
-:: Creamos una entrada para aceptar un valor elegido por el usuario
+:: Creo una entrada para recibir un valor elegido por el usuario
 ECHO -------------------------------------------------------------------------------------------------------
 SET /P CHOICE="Escriba el numero correspondiente a la operacion que desee realizar y presione ENTER: "
 ECHO.
+
+REM Determino la opcion a ejecutar segun el numero elegido por el usuario
         
 IF !CHOICE!==1 GOTO ADB
 IF !CHOICE!==2 GOTO REBOOT-ADB
@@ -122,7 +122,7 @@ IF !CHOICE!==10 GOTO EXTRA
 IF !CHOICE!==11 GOTO CREDITS
 IF !CHOICE!==12 GOTO EXIT
 
-:: Opciones definidas
+:: Defino las opciones a utilizar
 :ADB
 adb devices
 pause
@@ -627,7 +627,11 @@ IF !CHOICE!==4 GOTO MENU
 
 :CREDITS
 CLS
-MODE 112,41
+MODE 112,44
+ECHO.
+ECHO -------------------------------------------------------------------------------------------------------
+ECHO CREDITS
+ECHO -------------------------------------------------------------------------------------------------------
 ECHO.
 ECHO This was made thanks to these fine people:
 ECHO.
