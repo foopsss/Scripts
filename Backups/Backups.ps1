@@ -8,7 +8,7 @@
     [CmdletBinding()]
     Param(
          [Parameter(Mandatory=$False,Position=0)]
-         [int]$Height = 18,
+         [int]$Height = 19,
          [Parameter(Mandatory=$False,Position=1)]
          [int]$Width = 77
     )
@@ -70,11 +70,12 @@ function Show-Menu {
     Get-Date -Format "hh:mm"
     Write-Host "----------------------------------------------------------------------------"
     Write-Host " "
-    Write-Host "1: Hacer copia del repositorio 'hosts'"
-    Write-Host "2: Hacer copia del repositorio 'scripts'"
-    Write-Host "3: Hacer copia del mundo de Minecraft"
-    Write-Host "4: Hacer copia de los mapas de Call of Duty: Black Ops III"
-    Write-Host "5: SALIR"
+    Write-Host "1. Hacer copia del repositorio 'hosts'."
+    Write-Host "2. Hacer copia del repositorio 'scripts'."
+    Write-Host "3. Hacer copia del mundo de Minecraft."
+    Write-Host "4. Hacer copia de los mapas de Call of Duty: Black Ops III."
+    Write-Host "5. Créditos."
+    Write-Host "6. SALIR."
     Write-Host " "
 }
 
@@ -155,6 +156,50 @@ do
 
     }
 
+    '5' {
+    Clear-Host
+    Write-Host "----------------------------------------------------------------------------"
+    Write-Host "CRÉDITOS"
+    Write-Host "----------------------------------------------------------------------------"
+    Write-Host ""
+    Write-Host "[•] Adam Bertram/adamtheautomator.com - Código para el título del script, el"
+    Write-Host "menú, las funciones, y para chequear si existe un archivo."
+    Write-Host "    (https://adamtheautomator.com/powershell-menu/)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "[•] Adam Gordon/blog.itpro.tv - Código para obtener la fecha y la hora."
+    Write-Host "    (https://blog.itpro.tv/get-date-powershell-cmdlet/)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "[•] SS64.com - Código para pausar el script y para cambiar el tamaño de la"
+    Write-Host "ventana."
+    Write-Host "    (https://ss64.com/ps/syntax-consolesize.html)" -ForegroundColor Yellow
+    Write-Host "    (https://ss64.com/ps/pause.html)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "[•] Michael Pietroforte/4sysops.com - Código para descargar un archivo de"
+    Write-Host "Internet."
+    Write-Host "    (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "[•] Microsoft Docs/PowerShell Community - Código para crear un archivo .zip"
+    Write-Host "a partir de una carpeta, copiar archivos, chequear si existe una carpeta,"
+    Write-Host "y declarar variables."
+    Write-Host "    (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.1)" -ForegroundColor Yellow
+    Write-Host "    (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1)" -ForegroundColor Yellow
+    Write-Host "    (https://devblogs.microsoft.com/powershell-community/determine-if-a-folder-exists/)" -ForegroundColor Yellow
+    Write-Host "    (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables?view=powershell-7.1)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "[•] shelladmin/shellgeek.com - Código para conseguir la ruta del directorio"
+    Write-Host "en el que se encuentra el script, y para conseguir el directorio que se"
+    Write-Host "encuentra antes."
+    Write-Host "    (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "[•] www.tutorialspoint.com - Código para las declaraciones if/elseif, y para"
+    Write-Host "crear o eliminar un directorio."
+    Write-Host "    (https://www.tutorialspoint.com/powershell/if_else_statement_in_powershell.htm)" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "[•] Karim Buzdar/www.faqforge.com - Código para realizar comentarios en el código."
+    Write-Host "    (https://www.faqforge.com/powershell/comment-code-powershell/)" -ForegroundColor Yellow
+    Write-Host ""
+    }
+
     }
 
     # Se simula con esto el "Presiona una tecla para continuar"
@@ -165,29 +210,6 @@ do
     Clear-Host
  }
 
-<# Hasta que la opción elegida sea 5 el script sigue funcionando #>
+<# Hasta que la opción elegida sea 6 el script sigue funcionando #>
 
-until ($selection -eq '5')
-
-<# Créditos
-•Adam Bertram/adamtheautomator.com - Código para el título del script, el menú, las funciones, y para chequear si existe un archivo.
- (https://adamtheautomator.com/powershell-menu/)
-•Adam Gordon/blog.itpro.tv - Código para obtener la fecha y la hora.
- (https://blog.itpro.tv/get-date-powershell-cmdlet/)
-•SS64.com - Código para pausar el script y para cambiar el tamaño de la ventana.
- (https://ss64.com/ps/syntax-consolesize.html)
- (https://ss64.com/ps/pause.html)
-•Michael Pietroforte/4sysops.com - Código para descargar un archivo de Internet.
- (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
-•Microsoft Docs/PowerShell Community - Código para crear un archivo .zip a partir de una carpeta, copiar archivos, chequear si existe una carpeta y declarar variables.
- (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.1)
- (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1)
- (https://devblogs.microsoft.com/powershell-community/determine-if-a-folder-exists/)
- (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables?view=powershell-7.1)
-•shelladmin/shellgeek.com - Código para conseguir la ruta del directorio en el que se encuentra el script.
- (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
-•www.tutorialspoint.com - Código para las declaraciones if/elseif, y para crear o eliminar un directorio.
- (https://www.tutorialspoint.com/powershell/if_else_statement_in_powershell.htm)
-•Karim Buzdar/www.faqforge.com - Código para realizar comentarios en el código.
- (https://www.faqforge.com/powershell/comment-code-powershell/)
-#>
+until ($selection -eq '6')
