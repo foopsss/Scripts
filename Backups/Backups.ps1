@@ -3,14 +3,14 @@
 "$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")"
 #>
 
-<# Definimos la función para cambiar el tamaño de la ventana de Powershell #>
+<# Defino la función para cambiar el tamaño de la ventana de Powershell #>
 
     [CmdletBinding()]
     Param(
          [Parameter(Mandatory=$False,Position=0)]
          [int]$Height = 18,
          [Parameter(Mandatory=$False,Position=1)]
-         [int]$Width = 80
+         [int]$Width = 77
     )
 
     $console = $host.ui.rawui
@@ -53,22 +53,22 @@
       ## "Height: " + $host.ui.rawui.WindowSize.Height
       ## "Width:  " + $host.ui.rawui.WindowSize.width
 
-<# Definimos el menú que vamos a usar #>
+<# Defino el menú que voy a usar #>
 
 function Show-Menu {
     param (
         [string]$Title = 'Herramienta para crear copias de seguridad'
     )
 
-    Write-Host "............................................................................"
+    Write-Host "----------------------------------------------------------------------------"
     Write-Host "¡Bienvenido!" -ForegroundColor Green
     Write-Host "Por favor seleccione de que desearía realizar una copia"
-    Write-Host "............................................................................"
+    Write-Host "----------------------------------------------------------------------------"
     Write-Host "Fecha:"
     Get-Date -Format "dd/MM/yyyy"
     Write-Host "Hora:"
     Get-Date -Format "hh:mm"
-    Write-Host "............................................................................"
+    Write-Host "----------------------------------------------------------------------------"
     Write-Host " "
     Write-Host "1: Hacer copia del repositorio 'hosts'"
     Write-Host "2: Hacer copia del repositorio 'scripts'"
@@ -78,9 +78,10 @@ function Show-Menu {
     Write-Host " "
 }
 
-<# Definimos las variables a utilizar #>
+<# Defino las variables a utilizar #>
 
 $wd = Get-Location
+$parent = Split-Path -Path $wd -Parent
 $github = 'https://github.com/foopsss/hosts/archive/refs/heads/master.zip'
 $github1 = 'https://github.com/foopsss/scripts/archive/refs/heads/main.zip' 
 $liben = 'C:\Users\liben\OneDrive\Backups\Zips'
@@ -89,11 +90,11 @@ $minecraft = 'J:\Minecraft\Juego\.minecraft\saves\Lucas3\*'
 $bo3modtoolsmaps = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\zm\'
 $bo3modtoolsprefabs = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\_prefabs\Own Prefabs\'
 
-<# Definimos el diálogo de elección y las opciones #>
+<# Defino el diálogo de elección y las opciones #>
 
 do
  {
-    # Definimos el diálogo para pedir que el usuario introduzca un número, así como una línea para separar los datos introducidos
+    # Defino el diálogo para pedir que el usuario introduzca un número, así como una línea para separar los datos introducidos
 
     Show-Menu
     $selection =
@@ -102,16 +103,16 @@ do
     switch ($selection)
     {
 
-    # Definimos las operaciones a realizar con cada comando
+    # Defino las operaciones a realizar con cada comando
 
     '1' {
 
     Clear-Host
     Write-Host "¡Extrayendo contenido de la página y creando archivo .zip!" -ForegroundColor Red
-    Invoke-WebRequest -Uri "$github" -OutFile "$wd\Zips\Hosts.zip"
-    Copy-Item "$wd\Zips\Hosts.zip" -Destination "$liben\Hosts.zip" -Force
+    Invoke-WebRequest -Uri "$github" -OutFile "$parent\Zips\Hosts.zip"
+    Copy-Item "$parent\Zips\Hosts.zip" -Destination "$liben\Hosts.zip" -Force
 
-    if (Test-Path -Path $wd\Zips\Hosts.zip -PathType Leaf) {
+    if (Test-Path -Path $parent\Zips\Hosts.zip -PathType Leaf) {
      Write-Host "¡Archivo creado!" -ForegroundColor Green
     }
 
@@ -133,10 +134,10 @@ do
     '3' {
     Clear-Host
     Write-Host "¡Creando archivo .zip!"  -ForegroundColor Red
-    Compress-Archive -Path "$minecraft" -DestinationPath "$wd\Zips\Lucas3.zip" -Update
-    Copy-Item "$wd\Zips\Lucas3.zip" -Destination "$liben\Lucas3.zip" -Force
+    Compress-Archive -Path "$minecraft" -DestinationPath "$parent\Zips\Lucas3.zip" -Update
+    Copy-Item "$parent\Zips\Lucas3.zip" -Destination "$liben\Lucas3.zip" -Force
 
-    if (Test-Path -Path "$wd\Zips\Lucas3.zip", "$liben\Lucas3.zip" -PathType Leaf) {
+    if (Test-Path -Path "$parent\Zips\Lucas3.zip", "$liben\Lucas3.zip" -PathType Leaf) {
      Write-Host "¡Archivo creado!" -ForegroundColor Green
     }
 
@@ -145,10 +146,10 @@ do
     '4' {
     Clear-Host
     Write-Host "¡Creando archivo .zip!"  -ForegroundColor Red
-    Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$wd\Zips\Black Ops III Mod Tools.zip" -Update
-    Copy-Item "$wd\Zips\Black Ops III Mod Tools.zip" -Destination "$liben\Black Ops III Mod Tools.zip" -Force
+    Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$parent\Zips\Black Ops III Mod Tools.zip" -Update
+    Copy-Item "$parent\Zips\Black Ops III Mod Tools.zip" -Destination "$liben\Black Ops III Mod Tools.zip" -Force
 
-    if (Test-Path -Path "$wd\Zips\Black Ops III Mod Tools.zip", "$liben\Black Ops III Mod Tools.zip" -PathType Leaf) {
+    if (Test-Path -Path "$parent\Zips\Black Ops III Mod Tools.zip", "$liben\Black Ops III Mod Tools.zip" -PathType Leaf) {
      Write-Host "¡Archivo creado!" -ForegroundColor Green
     }
 
