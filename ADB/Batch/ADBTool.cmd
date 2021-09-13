@@ -69,7 +69,7 @@ CLS
 ECHO.
 ECHO -------------------------------------------------------------------------------------------------------
 ECHO Bienvenido a mi herramienta para usar ADB y Fastboot.
-ECHO Espero que encuentres esta humilde herramienta de utilidad y te haga el uso de ADB mas facil.
+ECHO Espero que encuentres esta herramienta de utilidad y te haga el uso de ADB mas facil.
 ECHO -------------------------------------------------------------------------------------------------------
 ECHO Fecha:
 date /t

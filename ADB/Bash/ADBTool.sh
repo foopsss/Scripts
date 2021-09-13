@@ -13,22 +13,22 @@ menu_option_one() {
 }
 
 menu_option_two() {
-  echo Reiniciando!
+  echo "¡Reiniciando!"
   adb reboot
 }
 
 menu_option_three() {
-  echo Reiniciando!
+  echo "¡Reiniciando!"
   adb reboot recovery
 }
 
 menu_option_four() {
-  echo Reiniciando!  
+  echo "¡Reiniciando!"  
   adb reboot bootloader
 }
 
 menu_option_five() {
-  /bin/bash Files.sh
+  /bin/bash Archivos.sh
 }
 
 menu_option_six() {
@@ -44,7 +44,7 @@ menu_option_eight() {
 }
 
 menu_option_eleven() {
-  /bin/bash Credits.sh
+  /bin/bash Creditos.sh
 }
 
 menu_option_twelve() {
@@ -71,7 +71,7 @@ do
     clear
     echo "-------------------------------------------------------------------------------------------------------"
     echo "Bienvenido a mi herramienta para usar ADB y Fastboot."
-    echo "Espero que encuentres esta humilde herramienta de utilidad y te haga el uso de ADB mas facil."
+    echo "Espero que encuentres esta herramienta de utilidad y te haga el uso de ADB más fácil."
     echo "-------------------------------------------------------------------------------------------------------"
     echo "Bienvenido $(whoami), hoy es $(date)"
     echo "-------------------------------------------------------------------------------------------------------"
@@ -96,13 +96,13 @@ do
     echo "MISCELANEO"
     echo "----------"
     echo
-    echo "10. Elegir mas opciones."
-    echo "11. Creditos."
+    echo "10. Elegir más opciones."
+    echo "11. Créditos."
     echo "12. SALIR."
     echo
     
     # Creo una entrada para recibir un valor elegido por el usuario
-    echo -n "Escribi el numero que corresponda a la opcion que desees y presiona ENTER: "
+    echo -n "Escriba el numero que corresponda a la opcion que desees y presiona ENTER: "
     read selection
     echo
 
