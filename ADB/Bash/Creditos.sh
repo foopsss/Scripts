@@ -23,3 +23,6 @@ echo
 echo "[•] TecAdmin - User 'Rahul' - Code to get the current date and time."
 echo "    (https://tecadmin.net/get-current-date-and-time-in-bash/)"
 echo
+echo "[•] Ryan's Tutorials/ryanstutorials.net -  Code to make if statements and some information about operators."
+echo "    (https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php)"
+echo
