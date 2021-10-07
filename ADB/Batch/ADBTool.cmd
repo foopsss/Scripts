@@ -592,7 +592,7 @@ IF !CHOICE!==4 GOTO MENU
     ECHO.
     adb sideload !RUTA1!
     ECHO -------------------------------------------------------------------------------------------------------
-    SET /P CHOICE="Necesita copiar otro archivo? [S/N]: "
+    SET /P CHOICE="Necesita instalar otro archivo? [S/N]: "
     
     IF /I !CHOICE!==S GOTO SIDELOAD
     IF /I !CHOICE!==N GOTO EXTRA
@@ -672,10 +672,3 @@ GOTO MENU
 :EXIT
 adb kill-server
 exit
-
-:DONTRUN
-ECHO Su sistema operativo no soporta una o mas funciones del script, por lo que procedera a cerrarse.
-ECHO Por favor, ejecute el script en un sistema operativo soportado (Windows Vista en adelante). Gracias.
-ECHO.
-PAUSE
-EXIT

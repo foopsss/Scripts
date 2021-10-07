@@ -37,18 +37,18 @@ until [ "$selection" = "0" ];
 do   
   clear
   echo "-------------------------------------------------------------------------------------------------------"
-  echo "En este apartado, usted podra optar por formatear ciertas particiones de su dispositivo utilizando el"
+  echo "En este apartado, usted podrá optar por formatear ciertas particiones de su dispositivo utilizando el"
   echo "modo Fastboot."
   echo "-------------------------------------------------------------------------------------------------------"
   echo
   echo "1. Formatear la particion /system.   (fastboot format system)"
   echo "2. Formatear la particion /data.     (fastboot format userdata)"
   echo "3. Formatear la particion /cache.    (fastboot format cache)"
-  echo "4. Volver al menu principal."
+  echo "4. Volver al menú principal."
   echo
   
   # Creo una entrada para recibir un valor elegido por el usuario
-  echo -n "Escriba el numero correspondiente a la operacion que desee realizar y presione ENTER: "
+  echo -n "Escriba el número correspondiente a la operación que desee realizar y presione ENTER: "
   read selection
   echo
 
