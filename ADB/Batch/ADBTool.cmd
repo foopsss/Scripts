@@ -8,13 +8,6 @@ TITLE Herramienta de ADB y Fastboot
 COLOR 17
 MODE 105,38
 
-REM Defino los sistemas en los que no puede correr el script
-
-:: Chequear si se corre Windows XP
-VER | FIND "Windows XP" >NUL && GOTO DONTRUN
-:: Chequear si se corre Windows 2000
-VER | FIND "Windows 2000" >NUL && GOTO DONTRUN
-
 REM Defino una propiedad para evitar una vulnerabilidad con el comando SET
 
 SETLOCAL EnableDelayedExpansion

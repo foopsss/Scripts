@@ -2,6 +2,10 @@
 
 #!/bin/bash
 
+# Defino propiedades de la ventana
+
+resize -s 33 105 > /dev/null
+
 # Defino los cŕeditos del script
 
 echo "-------------------------------------------------------------------------------------------------------"

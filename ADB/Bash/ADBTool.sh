@@ -52,7 +52,7 @@ menu_option_ten() {
 }
 
 menu_option_eleven() {
-  /bin/bash Creditos.sh
+  /bin/bash Créditos.sh
 }
 
 menu_option_twelve() {
@@ -72,7 +72,7 @@ incorrect_selection() {
   echo "¡Selección incorrecta! Por favor, intente de nuevo."
 }
 
-# Defino el menu de opciones a utilizar
+# Defino el menú de opciones a utilizar
 
 until [ "$selection" = "0" ];
 do   
@@ -110,11 +110,11 @@ do
   echo
   
   # Creo una entrada para recibir un valor elegido por el usuario
-  echo -n "Escriba el numero correspondiente a la operacion que desee realizar y presione ENTER: "
+  echo -n "Escriba el número correspondiente a la operación que desee realizar y presione ENTER: "
   read selection
   echo
 
-  # Determino la opcion a ejecutar segun el numero elegido por el usuario
+  # Determino la opción a ejecutar según el número elegido por el usuario
   case $selection in
       1) clear; menu_option_one; press_enter;;
       2) clear; menu_option_two; press_enter;;
