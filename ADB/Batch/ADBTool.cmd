@@ -392,12 +392,11 @@ IF !CHOICE!==4 GOTO MENU
        ECHO -------------------------------------------------------------------------------------------------------
        ECHO En este apartado, usted podra optar por "desinstalar" aplicaciones de su dispositivo. Tenga en cuenta
        ECHO que no es posible borrar completamente una aplicacion del dispositivo, sino para el usuario actual, por
-       ECHO lo que esta puede ser restaurada con un reseteo del dispositivo, o utilizando la siguiente opcion de
-       ECHO este apartado.
+       ECHO lo que esta puede ser restaurada con un reseteo, o utilizando la siguiente opcion de este apartado.
        ECHO.
-       ECHO Para esto, se requiere el "ID de aplicacion" de la aplicacion que quiera desinstalar. Para obtenerlo,
-       ECHO puede descargar alguna aplicacion de la Play Store o la Web, como "Package Name Viewer 2.0", o utilizar
-       ECHO alguna de las opciones del sexto apartado del conjunto de opciones extra.
+       ECHO Para esto, se requiere el "ID" de la aplicacion que quiera desinstalar. Para obtenerlo, puede descargar
+       ECHO alguna aplicacion de la Play Store o la Web, como "Package Name Viewer 2.0", o utilizar alguna de las
+       ECHO opciones del sexto apartado del conjunto de opciones extra.
        ECHO -------------------------------------------------------------------------------------------------------
        ECHO.
 
@@ -416,7 +415,7 @@ IF !CHOICE!==4 GOTO MENU
        ECHO.
        ECHO -------------------------------------------------------------------------------------------------------
        ECHO En este apartado, usted podra optar por "reinstalar" aquellas aplicaciones que haya removido de su
-       ECHO dispositivo usando la opcion anterior.
+       ECHO dispositivo utilizando la opcion anterior.
        ECHO.
        ECHO Se requiere el ID de la aplicacion desinstalada.
        ECHO -------------------------------------------------------------------------------------------------------
@@ -461,7 +460,7 @@ IF !CHOICE!==4 GOTO MENU
        ECHO En este apartado, usted podra optar por reactivar aquellas aplicaciones que haya desactivado utilizando
        ECHO la opcion anterior.
        ECHO.
-       ECHO Se requiere el ID de la aplicacion desactivada.
+       ECHO Se requiere el ID de la aplicacion a reactivar.
        ECHO -------------------------------------------------------------------------------------------------------
        ECHO.
 

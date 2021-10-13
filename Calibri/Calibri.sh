@@ -2,6 +2,8 @@
 
 #!/bin/bash
 
+# Process starts here
+
 echo "Installing fonts..."
 
 # Creating the directory and copying folder contents.

@@ -28,7 +28,7 @@ menu_option_four() {
 }
 
 menu_option_five() {
-  /bin/bash Archivos.sh
+  /bin/bash $(pwd)/ExtraFunctions/Files.sh
 }
 
 menu_option_six() {
@@ -44,15 +44,15 @@ menu_option_eight() {
 }
 
 menu_option_nine() {
-  /bin/bash Format.sh
+  /bin/bash $(pwd)/ExtraFunctions/Format.sh
 }
 
 menu_option_ten() {
-  /bin/bash Extra.sh
+  /bin/bash $(pwd)/ExtraFunctions/Extra.sh
 }
 
 menu_option_eleven() {
-  /bin/bash Créditos.sh
+  /bin/bash $(pwd)/ExtraFunctions/Credits.sh
 }
 
 menu_option_twelve() {
@@ -72,7 +72,7 @@ incorrect_selection() {
   echo "¡Selección incorrecta! Por favor, intente de nuevo."
 }
 
-# Defino el menú de opciones a utilizar
+# Defino el menú de selección de opciones
 
 until [ "$selection" = "0" ];
 do   

@@ -14,7 +14,7 @@ menu_option_one() {
   echo "Para copiar un archivo hacia el dispositivo, por favor, indique su ubicación incluyendo el nombre de"
   echo "este, y la ubicación en el dispositivo a la cual le gustaría copiarlo."
   echo
-  echo "Ejemplo: "adb push /home/Usuario/Documentos/Texto.txt/ /sdcard/Textos/"."
+  echo "Ejemplo: 'adb push /home/Usuario/Documentos/Texto.txt/ /sdcard/Textos/'."
   echo "-------------------------------------------------------------------------------------------------------"
   echo -n "Ubicación del archivo: "
   read ubicacion1
@@ -40,7 +40,7 @@ menu_option_two() {
   echo "Para copiar un archivo desde el dispositivo, por favor, indique su ubicación incluyendo el nombre de"
   echo "este, y la ubicación en el ordenador a la cual le gustaría copiarlo."
   echo
-  echo "Ejemplo: "adb pull /sdcard/Textos/Texto.txt/ /home/Usuario/Documentos/"."
+  echo "Ejemplo: 'adb pull /sdcard/Textos/Texto.txt/ /home/Usuario/Documentos/'."
   echo "-------------------------------------------------------------------------------------------------------"
   echo -n "Ubicación del archivo: "
   read ubicacion1

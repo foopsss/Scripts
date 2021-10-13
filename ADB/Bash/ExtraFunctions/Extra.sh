@@ -9,16 +9,16 @@ resize -s 33 105 > /dev/null
 # Defino las opciones a utilizar
 
 menu_option_one() {
-  /bin/bash 
+  /bin/bash $(pwd)/ExtraFunctions/AppMan.sh
 }
 
 menu_option_two() {
   clear
   echo "-------------------------------------------------------------------------------------------------------"
-  echo "En este apartado, usted podrá optar por instalar un archivo .zip mediante el modo Recovery."
+  echo "En este apartado, usted podrá optar por instalar un archivo .zip mediante el modo Recovery. Para ello,"
+  echo "por favor, indique su ubicación, incluyendo el nombre de este."
   echo
-  echo "Para ello, por favor, indique su ubicación incluyendo el nombre de este."
-  echo "Ejemplo: "/home/Usuario/Documentos/Ejemplo.zip/"."
+  echo "Ejemplo: '/home/Usuario/Documentos/Ejemplo.zip/'."
   echo "-------------------------------------------------------------------------------------------------------"
   echo -n "Ubicación del archivo: "
   read ubicacion
