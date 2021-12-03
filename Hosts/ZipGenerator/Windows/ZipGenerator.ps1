@@ -3,7 +3,7 @@ $wd = Get-Location
 
 <# Defino las funciones a utilizar #>
 function ExitScript {
-    # Se simula con esto el "Presiona una tecla para salir".
+    # Con esta función se simula el "Presiona una tecla para salir".
     # Luego se borra todo el contenido para imprimir el menú otra vez en una pantalla limpia.
     Write-Host "Presione una tecla para salir." -ForegroundColor Yellow
     [void][System.Console]::ReadKey($FALSE)
