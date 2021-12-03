@@ -37,7 +37,7 @@ fc-cache -v > /dev/null
  (https://koenwoortman.com/bash-script-get-current-directory/)
 •StackOverFlow - User "John Kugelman" - Code to copy folder contents except one file.
  (https://stackoverflow.com/questions/1313590/bash-copy-all-files-except-one)
-•StackOverFlow - User "Andy Lester" - Code to set a variable's value as a command output.
+•StackOverFlow - User "Andy Lester" - Code to set a variable to the output of a command.
  (https://stackoverflow.com/questions/4651437/how-do-i-set-a-variable-to-the-output-of-a-command-in-bash)
 •The Linux Documentation Project/tldp.org - Code to count files in the current directory.
  (https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x700.html)

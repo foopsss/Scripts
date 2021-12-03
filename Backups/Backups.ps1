@@ -1,8 +1,3 @@
-<# Código Extra
-"Write-Host "Presione cualquier tecla para salir" -ForegroundColor Red"
-"$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")"
-#>
-
 <# Defino la función para cambiar el tamaño de la ventana de Powershell #>
 
     [CmdletBinding()]
