@@ -6,7 +6,7 @@ Here I store some scripts[^1] I made thanks to the Internet community that I'd l
 * In the **Calibri** folder, there's a shell script to install the Calibri font family for the local user. However, the font files **are not included**.
 * In the **Hosts** folder, there are two tools:
   * *HostsDownloader* is a script for Windows (Batch - Powershell) that modifies the hosts file and overwrites it with the latest version of my [hosts-porn](https://github.com/foopsss/hosts/blob/master/hosts-porn) file. It sets the file as read-only at the end, to make manually editing it a bit harder.
-  * *ZipGenerator* is a script that pulls some files from my repos ([hosts-porn](https://github.com/foopsss/hosts/blob/master/hosts-porn), [update-binary](https://github.com/foopsss/Scripts/blob/main/Hosts/ZipGenerator/files/update-binary) and [updater-script](https://github.com/foopsss/Scripts/blob/main/Hosts/ZipGenerator/files/updater-script)) to create a flashable zip file to install the hosts-porn file on Android. It's made both for GNU/Linux (Shell) and Windows[^2] (Powershell).
+  * *ZipGenerator* is a script that pulls some files from my repos ([hosts-porn](https://github.com/foopsss/hosts/blob/master/hosts-porn), [update-binary](https://github.com/foopsss/Scripts/blob/main/Hosts/ZipGenerator/files/update-binary) and [updater-script](https://github.com/foopsss/Scripts/blob/main/Hosts/ZipGenerator/files/updater-script)) to create a flashable zip file to install the hosts-porn file on Android. It's made both for GNU/Linux (Shell) and Windows (Powershell)[^2].
 
 # Credits
 Credits for everyone that helped me are included in each script, either in the source code or in a sub-menu. But, I'd also like to add some honorable mentions:
