@@ -1,7 +1,7 @@
-﻿<# Defino las variables a utilizar #>
+﻿<# Defino las variables a utilizar. #>
 $wd = Get-Location
 
-<# Defino las funciones a utilizar #>
+<# Defino las funciones a utilizar. #>
 function ExitScript {
     # Con esta función se simula el "Presiona una tecla para salir".
     # Luego se borra todo el contenido para imprimir el menú otra vez en una pantalla limpia.
@@ -12,7 +12,7 @@ function ExitScript {
     EXIT
 }
 
-<# Código #>
+<# Código. #>
 
     # Cambio el directorio de trabajo al actual.
     Set-Location -Path "$wd"

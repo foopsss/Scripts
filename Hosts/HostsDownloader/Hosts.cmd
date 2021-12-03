@@ -1,15 +1,16 @@
-:: Stopping commands from showing on-screen
+:: Evito que los comandos se muestren en pantalla.
 @ECHO OFF
 
-:: Defining window properties
+:: Defino las propiedades de la ventana.
 TITLE Hosts Downloader
 MODE 80,10
 
+:: Código
 attrib -R C:\Windows\System32\drivers\etc\hosts
 powershell -c Invoke-WebRequest -Uri "https://raw.githubusercontent.com/foopsss/hosts/master/hosts-porn" -OutFile "C:\Windows\System32\drivers\etc\hosts"
 attrib +R C:\Windows\System32\drivers\etc\hosts
 
-:: Credits
+:: Créditos
 :: •www.tutorialspoint.com - Code to make comments (Batch).
 ::  (https://www.tutorialspoint.com/batch_script/batch_script_comments.htm)
 :: •ServerFault - User "jftuga" - Code to turn off echo-ing (Batch).
