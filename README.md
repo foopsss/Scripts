@@ -1,9 +1,9 @@
 # Scripts
 Here I store some scripts[^1] I made thanks to the Internet community that I'd like to share.
 
-* In the **ADB** folder, there's a command-line appliance I made both for Windows (Batch) and GNU/Linux (Shell) that aims to simplify the use of ADB and Fastboot.
+* In the **ADB** folder, there's a command-line appliance I made both for Windows (Batch) and GNU/Linux (Shell) that aims to simplify the use of ADB and Fastboot. This tool is currently being reworked for both operating systems to make code more readable and better, where possible.
 * In the **Backups** folder, there's a Windows (Powershell) command-line appliance to make backups of some things I regularly use. It's very specific to my computer.
-* In the **Calibri** folder, there's a shell script to install the Calibri font family for the local user. However, the font files **are not included**.
+* In the **Calibri** folder, there's a shell script to install the Calibri font family for the local user. However, the font files **are not included**. It can be easily tweaked for other font families.
 * In the **Hosts** folder, there are two tools:
   * *HostsDownloader* is a script for Windows (Batch - Powershell) that modifies the hosts file and overwrites it with the latest version of my [hosts-porn](https://github.com/foopsss/hosts/blob/master/hosts-porn) file. It sets the file as read-only at the end, to make manually editing it a bit harder.
   * *ZipGenerator* is a script that pulls some files from my repos ([hosts-porn](https://github.com/foopsss/hosts/blob/master/hosts-porn), [update-binary](https://github.com/foopsss/Scripts/blob/main/Hosts/ZipGenerator/files/update-binary) and [updater-script](https://github.com/foopsss/Scripts/blob/main/Hosts/ZipGenerator/files/updater-script)) to create a flashable zip file to install the hosts-porn file on Android. It's made both for GNU/Linux (Shell) and Windows (Powershell)[^2].

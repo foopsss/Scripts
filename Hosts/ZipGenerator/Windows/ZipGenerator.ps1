@@ -56,7 +56,7 @@ function ExitScript {
 •www.tutorialspoint.com - Código para crear y eliminar carpetas.
  (https://www.tutorialspoint.com/powershell/powershell_files_create_folders.htm)
  (https://www.tutorialspoint.com/powershell/powershell_files_delete_folders.htm)
-•StackOverFlow - Usuario 'ChiliYago' - Código para esconder el texto retornado por la consola, utilizando Out-Null.
+•Stack Overflow - Usuario 'ChiliYago' - Código para esconder el texto retornado por la consola, utilizando Out-Null.
  (https://stackoverflow.com/questions/46586382/hide-powershell-output)
 •Michael Pietroforte/4sysops.com - Código para descargar un archivo de Internet.
  (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
