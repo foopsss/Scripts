@@ -1,197 +1,140 @@
-<# Defino las funciones a utilizar. #>
-
-    # FunciÃ³n para cambiar el tamaÃ±o de la ventana de Powershell.
-        [CmdletBinding()]
-        Param(
-             [Parameter(Mandatory=$False,Position=0)]
-             [int]$Height = 18,
-             [Parameter(Mandatory=$False,Position=1)]
-             [int]$Width = 77
-        )
-
-        $console = $host.ui.rawui
-        $ConBuffer  = $console.BufferSize
-        $ConSize = $console.WindowSize
-
-        $currWidth = $ConSize.Width
-        $currHeight = $ConSize.Height
-
-        # If height is too large, set to max allowed size.
-        if ($Height -gt $host.UI.RawUI.MaxPhysicalWindowSize.Height) {
-            $Height = $host.UI.RawUI.MaxPhysicalWindowSize.Height
-        }
-
-        # If width is too large, set to max allowed size.
-        if ($Width -gt $host.UI.RawUI.MaxPhysicalWindowSize.Width) {
-         $Width = $host.UI.RawUI.MaxPhysicalWindowSize.Width
-        }
-
-        # If the Buffer is wider than the new console setting, first reduce the width.
-        If ($ConBuffer.Width -gt $Width ) {
-           $currWidth = $Width
-        }
-
-        # If the Buffer is higher than the new console setting, first reduce the height.
-        If ($ConBuffer.Height -gt $Height ) {
-            $currHeight = $Height
-        }
-
-        # Initial resizing if needed.
-        $host.UI.RawUI.WindowSize = New-Object System.Management.Automation.Host.size($currWidth,$currHeight)
-
-        # Set the Buffer.
-        $host.UI.RawUI.BufferSize = New-Object System.Management.Automation.Host.size($Width,2000)
-
-        # Now set the WindowSize.
-        $host.UI.RawUI.WindowSize = New-Object System.Management.Automation.Host.size($Width,$Height)
-
-    # FunciÃ³n para definir el menÃº que voy a usar.
-        function Show-Menu {
-            param (
-                [string]$Title = 'Herramienta para crear copias de seguridad'
-            )
-            Write-Host "----------------------------------------------------------------------------"
-            Write-Host "Â¡Bienvenido!" -ForegroundColor Green
-            Write-Host "Por favor, seleccione de que desearÃ­a realizar una copia"
-            Write-Host "----------------------------------------------------------------------------"
-            Write-Host "Fecha:"
-            Get-Date -Format "dd/MM/yyyy"
-            Write-Host "Hora:"
-            Get-Date -Format "hh:mm"
-            Write-Host "----------------------------------------------------------------------------"
-            Write-Host "1. Hacer copia del repositorio 'hosts'."
-            Write-Host "2. Hacer copia del repositorio 'scripts'."
-            Write-Host "3. Hacer copia del mundo de Minecraft."
-            Write-Host "4. Hacer copia de los mapas de Call of Duty: Black Ops III."
-            Write-Host "5. Hacer copia de los datos de partida de Mafia III: Definitive Edition."
-            Write-Host "6. SALIR."
-            Write-Host " "
-        }
-
-    # Con esta funciÃ³n se simula el "Presiona una tecla para salir".
-    # Luego se borra todo el contenido para imprimir el menÃº otra vez en una pantalla limpia.
-        function ExitScript {
-            Write-Host "Presione una tecla para salir." -ForegroundColor Yellow
-            [void][System.Console]::ReadKey($FALSE)
-            Clear-Host
-        }
-
 <# Defino las variables a utilizar. #>
 $wd = Get-Location
 $parent = Split-Path -Path $wd -Parent
 $github = 'https://github.com/foopsss/hosts/archive/refs/heads/master.zip'
 $github1 = 'https://github.com/foopsss/scripts/archive/refs/heads/main.zip' 
-$liben = 'C:\Users\liben\OneDrive\Backups\Zips'
+$liben = 'C:\Users\liben\OneDrive\Backups\Zips\'
 $LUCAS3 = 'G:\Backup\Software\Scripts\'
 $minecraft = 'J:\Minecraft\Juego\.minecraft\saves\Lucas3\'
 $bo3modtoolsmaps = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\zm\'
 $bo3modtoolsprefabs = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\_prefabs\Own Prefabs\'
-$mafia3 = 'C:\Users\liben\AppData\Local\2K Games\Mafia III'
+$mafia3 = 'C:\Users\liben\AppData\Local\2K Games\Mafia III\'
 
-<# Defino el diÃ¡logo de elecciÃ³n y las opciones. #>
+<# Defino el menú de opciones. #>
+function Show-Menu {
+    Write-Host "----------------------------------------------------------------------------"
+    Write-Host "¡Bienvenido!" -ForegroundColor Green
+    Write-Host "Por favor, seleccione de que desearía realizar una copia"
+    Write-Host "----------------------------------------------------------------------------"
+    Write-Host "Fecha:"
+    Get-Date -Format "dd/MM/yyyy"
+    Write-Host "Hora:"
+    Get-Date -Format "hh:mm"
+    Write-Host "----------------------------------------------------------------------------"
+    Write-Host "1. Hacer copia del repositorio 'hosts'."
+    Write-Host "2. Hacer copia del repositorio 'scripts'."
+    Write-Host "3. Hacer copia del mundo de Minecraft."
+    Write-Host "4. Hacer copia de los mapas de Call of Duty: Black Ops III."
+    Write-Host "5. Hacer copia de los datos de partida de Mafia III: Definitive Edition."
+    Write-Host "6. SALIR."
+    Write-Host " "
+}
+
+<# Defino el diálogo de elección y las opciones. #>
 do
  {
-    # Defino el diÃ¡logo para pedir que el usuario introduzca un nÃºmero, asÃ­ como una lÃ­Â­nea para separar los datos introducidos.
+    # Diálogo de elección.
     Show-Menu
     $selection =
-    Read-Host "Escriba el nÃºmero que corresponda a la opcion que desee y presione ENTER"
+    Read-Host "Escriba el número que corresponda a la opcion que desee y presione ENTER"
     Write-Host " "
 
-    # Defino las operaciones a realizar con cada comando.
+    # Operaciones a realizar con cada comando.
     switch ($selection)
     {
         '1' {
             Clear-Host
-            Write-Host "Â¡Extrayendo contenido de la pÃ¡gina y creando archivo .zip!" -ForegroundColor Red
+            Write-Host "¡Extrayendo contenido de la página y creando archivo zip!" -ForegroundColor Gray
             Invoke-WebRequest -Uri "$github" -OutFile "$parent\Zips\Hosts.zip"
             Copy-Item "$parent\Zips\Hosts.zip" -Destination "$liben\Hosts.zip" -Force
 
-            if (Test-Path -Path $parent\Zips\Hosts.zip -PathType Leaf) {
-            Write-Host ("Â¡Archivo creado!") -ForegroundColor Green
+            if ( Test-Path -Path "$parent\Zips\Hosts.zip", "$liben\Hosts.zip" -PathType Leaf ) {
+                Write-Host "Operación completada exitosamente." -ForegroundColor Green
             } else {
-            Write-Host ("Â¡El archivo no se pudo crear!") -ForegroundColor Red
+                Write-Host "La operación no se pudo completar. Intente de nuevo." -ForegroundColor Red
             }
         }
 
         '2' {
             Clear-Host
-            Write-Host "Â¡Extrayendo contenido de la pÃ¡gina y creando archivo .zip!" -ForegroundColor Red
+            Write-Host "¡Extrayendo contenido de la página y creando archivo zip!" -ForegroundColor Gray
             Invoke-WebRequest -Uri "$github1" -OutFile "$LUCAS3\Scripts.zip"
             Copy-Item "$LUCAS3\Scripts.zip" -Destination "$liben\Scripts.zip" -Force
 
-            if (Test-Path -Path "$LUCAS3\Scripts.zip", "$liben\Scripts.zip" -PathType Leaf) {
-            Write-Host ("Â¡Archivo creado!") -ForegroundColor Green
+            if ( Test-Path -Path "$LUCAS3\Scripts.zip", "$liben\Scripts.zip" -PathType Leaf ) {
+                Write-Host "Operación completada exitosamente." -ForegroundColor Green
             } else {
-            Write-Host ("Â¡El archivo no se pudo crear!") -ForegroundColor Red
+                Write-Host "La operación no se pudo completar. Intente de nuevo." -ForegroundColor Red
             }
         }
 
         '3' {
             Clear-Host
-            Write-Host "Â¡Creando archivo .zip!"  -ForegroundColor Red
+            Write-Host "¡Creando archivo zip!" -ForegroundColor Gray
             Compress-Archive -Path "$minecraft" -DestinationPath "$parent\Zips\Lucas3.zip" -Update -CompressionLevel Optimal
             Copy-Item "$parent\Zips\Lucas3.zip" -Destination "$liben\Lucas3.zip" -Force
 
-            if (Test-Path -Path "$parent\Zips\Lucas3.zip", "$liben\Lucas3.zip" -PathType Leaf) {
-            Write-Host ("Â¡Archivo creado!") -ForegroundColor Green
+            if ( Test-Path -Path "$parent\Zips\Lucas3.zip", "$liben\Lucas3.zip" -PathType Leaf ) {
+                Write-Host "Operación completada exitosamente." -ForegroundColor Green
             } else {
-            Write-Host ("Â¡El archivo no se pudo crear!") -ForegroundColor Red
+                Write-Host "La operación no se pudo completar. Intente de nuevo." -ForegroundColor Red
             }
         }
 
         '4' {
             Clear-Host
-            Write-Host "Â¡Creando archivo .zip!"  -ForegroundColor Red
+            Write-Host "¡Creando archivo zip!" -ForegroundColor Gray
             Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$parent\Zips\Black Ops III Mod Tools.zip" -Update -CompressionLevel Optimal
             Copy-Item "$parent\Zips\Black Ops III Mod Tools.zip" -Destination "$liben\Black Ops III Mod Tools.zip" -Force
 
-            if (Test-Path -Path "$parent\Zips\Black Ops III Mod Tools.zip", "$liben\Black Ops III Mod Tools.zip" -PathType Leaf) {
-            Write-Host ("Â¡Archivo creado!") -ForegroundColor Green
+            if ( Test-Path -Path "$parent\Zips\Black Ops III Mod Tools.zip", "$liben\Black Ops III Mod Tools.zip" -PathType Leaf ) {
+                Write-Host "Operación completada exitosamente." -ForegroundColor Green
             } else {
-            Write-Host ("Â¡El archivo no se pudo crear!") -ForegroundColor Red
+                Write-Host "La operación no se pudo completar. Intente de nuevo." -ForegroundColor Red
             }
         }
 
         '5' {
             Clear-Host
-            Write-Host "Â¡Creando archivo .zip!"  -ForegroundColor Red
+            Write-Host "¡Creando archivo zip!" -ForegroundColor Gray
             Compress-Archive -LiteralPath "$mafia3" -DestinationPath "$parent\Zips\Mafia III Definitive Edition.zip" -Update -CompressionLevel Optimal
             Copy-Item "$parent\Zips\Mafia III Definitive Edition.zip" -Destination "$liben\Mafia III Definitive Edition.zip" -Force
 
-            if (Test-Path -Path "$parent\Zips\Mafia III Definitive Edition.zip", "$liben\Mafia III Definitive Edition.zip" -PathType Leaf) {
-            Write-Host ("Â¡Archivo creado!") -ForegroundColor Green
+            if ( Test-Path -Path "$parent\Zips\Mafia III Definitive Edition.zip", "$liben\Mafia III Definitive Edition.zip" -PathType Leaf ) {
+                Write-Host "Operación completada exitosamente." -ForegroundColor Green
             } else {
-            Write-Host ("Â¡El archivo no se pudo crear!") -ForegroundColor Red
+                Write-Host "La operación no se pudo completar. Intente de nuevo." -ForegroundColor Red
             }
         }
     }
     
-    # Salgo de la secciÃ³n actual y limpio la pantalla.
-    ExitScript
+    # Salgo de la sección actual y limpio la pantalla.
+    Write-Host "Presione una tecla para salir." -ForegroundColor Yellow
+    [void][System.Console]::ReadKey($FALSE)
+    Clear-Host
  }
 
-<# Hasta que la opciÃ³n elegida sea 7 el script sigue funcionando. #>
+<# Hasta que la opción elegida sea 7 el script sigue funcionando. #>
 until ($selection -eq '6')
 
-<# CrÃ©ditos
-â€¢Adam Bertram/adamtheautomator.com - CÃ³digo para el tÃ­tulo del script, el menÃº, las funciones, y para chequear si existe un archivo.
+<# Credits
+•Adam Bertram/adamtheautomator.com - Code to print a menu.
  (https://adamtheautomator.com/powershell-menu/)
-â€¢Adam Gordon/blog.itpro.tv - CÃ³digo para obtener la fecha y la hora.
+•Adam Gordon/blog.itpro.tv - Code to get the time and date.
  (https://blog.itpro.tv/get-date-powershell-cmdlet/)
-â€¢SS64.com - CÃ³digo para pausar el script y para cambiar el tamaÃ±o de la ventana.
- (https://ss64.com/ps/syntax-consolesize.html)
+•SS64.com - Code to pause the script.
  (https://ss64.com/ps/pause.html)
-â€¢Michael Pietroforte/4sysops.com - CÃ³digo para descargar un archivo de Internet.
+•Michael Pietroforte/4sysops.com - Code to download Internet files.
  (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
-â€¢Microsoft Docs/PowerShell Community - CÃ³digo para crear un archivo .zip a partir de una carpeta, copiar archivos, chequear si existe una carpeta y declarar variables.
+•Microsoft Docs/PowerShell Community - Code to create a zip file from a directory, copy files, check if a file exists and to create variables.
  (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.1)
  (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1)
  (https://devblogs.microsoft.com/powershell-community/determine-if-a-folder-exists/)
  (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables?view=powershell-7.1)
-â€¢shelladmin/shellgeek.com - CÃ³digo para conseguir la ruta del directorio en el que se encuentra el script.
+•shelladmin/shellgeek.com - Code to get the current working directory.
  (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
-â€¢www.tutorialspoint.com - CÃ³digo para las declaraciones if/elseif, y para crear o eliminar un directorio.
+•www.tutorialspoint.com - Code for if statements and to create or delete a directory.
  (https://www.tutorialspoint.com/powershell/if_else_statement_in_powershell.htm)
-â€¢Karim Buzdar/www.faqforge.com - CÃ³digo para realizar comentarios en el cÃ³digo.
+•Karim Buzdar/www.faqforge.com - Code to make comments.
  (https://www.faqforge.com/powershell/comment-code-powershell/)
 #>
