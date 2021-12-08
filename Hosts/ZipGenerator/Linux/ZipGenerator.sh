@@ -1,9 +1,6 @@
 # Declaro el intérprete a utilizar.
 #!/bin/bash
 
-# Defino las propiedades de la ventana.
-resize -s 20 85 > /dev/null
-
 # Defino las variables a utilizar.
 ZipName=Hosts-Flash.zip
 
@@ -42,27 +39,6 @@ ErrorCheck() {
     fi
 }
 
-FileCheck() {
-# Esta función chequea si existe un archivo o carpeta, e imprime dos mensajes según el resultado.
-    if [ -e "$1" ]
-    then
-        GBT "Operación completada exitosamente."
-        BBT "El archivo zip ha sido creado con éxito. Muévalo a su dispositivo e instálelo usando un recovery personalizado compatible."
-    else
-        RBT "La operación no se pudo completar. Intente de nuevo."
-    fi
-}
-
-FileCheckX2() {
-# Esta función chequea si dos archivos/carpetas NO existen, e imprime un mensaje según el resultado.
-    if [ ! -e "$1" ] && [ ! -e "$2" ]
-    then
-        GBT "Operación completada exitosamente."
-    else
-        RBT "La operación no se pudo completar. Intente de nuevo."
-    fi
-}
-
 ExitScript() {
 # Con esta función se simula el "Presiona una tecla para salir".
 # Luego se borra todo el contenido para limpiar la terminal al salir.
@@ -86,6 +62,8 @@ echo "Creando las carpetas necesarias..."
     mkdir -p META-INF/com/google/android
     mkdir -p system/etc
 } 2>/dev/null
+
+# Chequeo si las carpetas existen.
 ErrorCheck
 echo
 
@@ -96,21 +74,45 @@ echo "Descargando los archivos necesarios de Internet..."
     wget https://raw.githubusercontent.com/foopsss/Scripts/main/Hosts/ZipGenerator/files/updater-script -P META-INF/com/google/android
     wget https://raw.githubusercontent.com/foopsss/hosts/master/hosts-porn -O system/etc/hosts
 } 2>/dev/null
+
+# Chequeo si los archivos existen.
 ErrorCheck
 echo
 
 # Creo el comprimido zip.
 echo "Creando el archivo zip..."
 zip -r -q $ZipName META-INF system
-FileCheck "$ZipName"
+
+# Chequeo si el comprimido zip existe.
+if [ -e "$ZipName" ]
+then
+    GBT "Operación completada exitosamente."
+    BBT "El archivo zip ha sido creado con éxito. Muévalo a su dispositivo e instálelo usando un recovery personalizado compatible."
+else
+    RBT "La operación no se pudo completar. Intente de nuevo."
+fi
 echo
 
-# Borro los archivos residuales.
-echo "Borrando los archivos residuales..."
-{
-    rm -rf META-INF system
-} 2>/dev/null
-FileCheckX2 "META-INF" "system"
+# Borro los archivos residuales si el usuario así lo decide.
+echo "¿Desea borrar los archivos residuales creados por el script? [S/N]: "
+read selection
+
+if [ ${selection} = "S" ]
+then
+    echo "Borrando los archivos residuales..."
+    {
+        rm -rf META-INF system
+    } 2>/dev/null
+
+    if [ ! -e META-INF ] && [ ! -e system ]
+    then
+        GBT "Operación completada exitosamente."
+    else
+        RBT "La operación no se pudo completar. Intente de nuevo."
+    fi
+else
+    ExitScript
+fi
 echo
 
 # Cierro el script.
