@@ -63,7 +63,7 @@ Write-Host "Presione una tecla para salir." -ForegroundColor Yellow
 EXIT
 
 <# Credits
-•shelladmin/shellgeek.com - Code to get the script current working directory.
+•shelladmin/shellgeek.com - Code to get the current working directory.
  (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
 •www.tutorialspoint.com - Code to create and delete directories.
  (https://www.tutorialspoint.com/powershell/powershell_files_create_folders.htm)
