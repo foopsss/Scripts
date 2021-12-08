@@ -117,7 +117,7 @@ echo
 ExitScript
 
 # Cŕeditos.
-<< 'CREDITOS'
+<< 'CREDITS'
 •Stack Overflow - User 'plhn' - Code to resize a terminal window.
  (https://stackoverflow.com/questions/5243445/bash-command-to-change-size-of-bash-window)
 •DevQA - User 'Amir Ghahrai' - Code to create and call functions.
@@ -141,4 +141,4 @@ ExitScript
   (https://www.gnu.org/software/wget/manual/html_node/Exit-Status.html)
 •nixCraft - User 'Vivek Gite' - Code to remove a folder using rm.
  (https://www.cyberciti.biz/tips/find-out-if-file-exists-with-conditional-expressions.html)
-CREDITOS
+CREDITS
