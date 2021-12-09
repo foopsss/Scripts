@@ -85,7 +85,7 @@ echo
 
 # Creo el comprimido zip.
 echo "Creando el archivo zip..."
-zip -r -q $ZipName META-INF system 
+zip -r -q $ZipName META-INF system
 
 # Chequeo si el comprimido zip existe.
 if [ -e "$ZipName" ]
