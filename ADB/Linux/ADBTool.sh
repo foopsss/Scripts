@@ -6,6 +6,9 @@
 
 resize -s 33 105 > /dev/null
 
+# Importo funciones de otro archivo
+source "$(pwd)/ExtraFunctions/Functions.sh"
+
 # Defino las opciones a utilizar
 
 menu_option_one() {
