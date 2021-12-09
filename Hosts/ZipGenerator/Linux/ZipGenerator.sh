@@ -31,11 +31,15 @@ BBT() {
 
 ErrorCheck() {
 # Esta función chequea el código de salida devuelto por un comando al ejecutarlo, para saber si se ejecutó correctamente o no.
+# Si se produce un error al ejecutar el script, este se cierra tras avisar al usuario.
     if [ $? -eq 0 ]
     then
         GBT "Operación completada exitosamente."
     else
         RBT "La operación no se pudo completar. Intente de nuevo."
+        echo
+        echo "Procediendo a cerrar el script..."
+        ExitScript
     fi
 }
 
@@ -81,7 +85,7 @@ echo
 
 # Creo el comprimido zip.
 echo "Creando el archivo zip..."
-zip -r -q $ZipName META-INF system
+zip -r -q $ZipName META-INF system 
 
 # Chequeo si el comprimido zip existe.
 if [ -e "$ZipName" ]
@@ -90,6 +94,9 @@ then
     BBT "El archivo zip ha sido creado con éxito. Muévalo a su dispositivo e instálelo usando un recovery personalizado compatible."
 else
     RBT "La operación no se pudo completar. Intente de nuevo."
+    echo
+    echo "Procediendo a cerrar el script..."
+    ExitScript
 fi
 echo
 
