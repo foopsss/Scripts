@@ -1,20 +1,23 @@
-<# Defino las variables a utilizar. #>
+<# Defino las variables globales a utilizar. #>
 $wd = Get-Location
 $parent = Split-Path -Path $wd -Parent
-$github = 'https://github.com/foopsss/hosts/archive/refs/heads/master.zip'
-$github1 = 'https://github.com/foopsss/scripts/archive/refs/heads/main.zip' 
-$liben = 'C:\Users\liben\OneDrive\Backups\Zips\'
-$LUCAS3 = 'G:\Backup\Software\Scripts\'
-$minecraft = 'J:\Minecraft\Juego\.minecraft\saves\Lucas3\'
-$bo3modtoolsmaps = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\zm\'
-$bo3modtoolsprefabs = 'J:\Lanzadores de Juegos\Steam\steamapps\common\Call of Duty Black Ops III\map_source\_prefabs\Own Prefabs\'
-$mafia3 = 'C:\Users\liben\AppData\Local\2K Games\Mafia III\'
+$onedrive = "C:\Users\Lucas\OneDrive\Backups\Zips\"
 
-<# Defino el men煤 de opciones. #>
+<# Defino las funciones globales a utilizar. #>
+function TestExistence {
+# Esta funci髇 chequea la existencia de los archivos que deber韆n ser guardados en la unidad USB y en OneDrive.
+    if ( (Test-Path -Path $arch1 -PathType Leaf) -and (Test-Path -Path $arch2 -PathType Leaf) ) {
+        Write-Host "Operacion completada exitosamente." -ForegroundColor Green
+    } else {
+        Write-Error "La operacion no se pudo completar. Intente de nuevo."
+    }
+}
+
+<# Defino el menu de opciones. #>
 function Show-Menu {
     Write-Host "----------------------------------------------------------------------------"
-    Write-Host "隆Bienvenido!" -ForegroundColor Green
-    Write-Host "Por favor, seleccione de que desear铆a realizar una copia"
+    Write-Host "Bienvenido!" -ForegroundColor Green
+    Write-Host "Por favor, seleccione de que desearia realizar una copia"
     Write-Host "----------------------------------------------------------------------------"
     Write-Host "Fecha:"
     Get-Date -Format "dd/MM/yyyy"
@@ -30,111 +33,209 @@ function Show-Menu {
     Write-Host " "
 }
 
-<# Defino el di谩logo de elecci贸n y las opciones. #>
+<# Defino el dialogo de eleccion y las opciones. #>
 do
  {
-    # Di谩logo de elecci贸n.
+    # Dialogo de eleccion.
     Show-Menu
     $selection =
-    Read-Host "Escriba el n煤mero que corresponda a la opcion que desee y presione ENTER"
+    Read-Host "Escriba el numero que corresponda a la opcion que desee y presione ENTER"
     Write-Host " "
 
     # Operaciones a realizar con cada comando.
     switch ($selection)
     {
         '1' {
-            Clear-Host
-            Write-Host "隆Extrayendo contenido de la p谩gina y creando archivo zip!" -ForegroundColor Gray
-            Invoke-WebRequest -Uri "$github" -OutFile "$parent\Zips\Hosts.zip"
-            Copy-Item "$parent\Zips\Hosts.zip" -Destination "$liben\Hosts.zip" -Force
+            # Defino las variables locales a utilizar.
+            $hosts = "https://github.com/foopsss/hosts/archive/refs/heads/master.zip"
+            $arch1 = "$onedrive\Hosts.zip"
+            $arch2 = "$parent\Zips\Hosts.zip"
 
-            if ( Test-Path -Path "$parent\Zips\Hosts.zip", "$liben\Hosts.zip" -PathType Leaf ) {
-                Write-Host "Operaci贸n completada exitosamente." -ForegroundColor Green
-            } else {
-                Write-Host "La operaci贸n no se pudo completar. Intente de nuevo." -ForegroundColor Red
-            }
+            # Limpio la pantalla.
+            Clear-Host
+
+            # Descargo los archivos.
+            Write-Host "Extrayendo contenido de la pagina y creando archivo zip!" -ForegroundColor Gray
+            Invoke-WebRequest -Uri "$hosts" -OutFile "$arch1"
+            Invoke-WebRequest -Uri "$hosts" -OutFile "$arch2"
+
+            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            TestExistence
         }
 
         '2' {
-            Clear-Host
-            Write-Host "隆Extrayendo contenido de la p谩gina y creando archivo zip!" -ForegroundColor Gray
-            Invoke-WebRequest -Uri "$github1" -OutFile "$LUCAS3\Scripts.zip"
-            Copy-Item "$LUCAS3\Scripts.zip" -Destination "$liben\Scripts.zip" -Force
+            # Defino las variables locales a utilizar.
+            $scriptsmain = "https://github.com/foopsss/scripts/archive/refs/heads/main.zip"
+            $scriptsdev = "https://github.com/foopsss/Scripts/archive/refs/heads/development.zip"
+            $arch1 = "$onedrive\Scripts.zip"
+            $arch2 = "$parent\Zips\Scripts.zip"
+            $arch3 = "G:\Backup\Software\Scripts\Scripts.zip"
 
-            if ( Test-Path -Path "$LUCAS3\Scripts.zip", "$liben\Scripts.zip" -PathType Leaf ) {
-                Write-Host "Operaci贸n completada exitosamente." -ForegroundColor Green
-            } else {
-                Write-Host "La operaci贸n no se pudo completar. Intente de nuevo." -ForegroundColor Red
+            # Defino los arreglos locales a utilizar.
+            $zips = @("Main.zip", "Development.zip")
+            $ubicaciones = @("$arch1", "$arch2", "$arch3")
+
+            # Defino las funciones locales a utilizar.
+                function TestCleaning {
+                # Esta funci髇 chequea que la limpieza de los archivos residuales haya sido exitosa.
+                    if ( !( (Test-Path -Path "$zips[1]" -PathType Leaf) -and (Test-Path -Path "$zips[2]" -PathType Leaf) ) ) {
+                        Write-Host "Limpieza completada!" -ForegroundColor Green
+                    } else {
+                        Write-Error "La limpieza no ha sido completada exitosamente."
+                    }
+                }
+
+                function TestExistenceV2 {
+                # Esta funci髇 chequea la existencia de los archivos que deber韆n ser guardados en la unidad USB y en OneDrive.
+                    if ( ( (Test-Path -Path $arch1 -PathType Leaf) -and (Test-Path -Path $arch2 -PathType Leaf) ) -and (Test-Path -Path $arch3 -PathType Leaf) ) {
+                        Write-Host "Operacion completada exitosamente." -ForegroundColor Green
+                    } else {
+                        Write-Error "La operacion no se pudo completar. Intente de nuevo."
+                    }
+                }
+
+            # Limpio la pantalla.
+            Clear-Host
+
+            # Descargo los archivos zip de cada rama del repositorio.
+            Write-Host "Descargando los archivos zip de las ramas del repositorio!" -ForegroundColor Gray
+            Invoke-WebRequest -Uri "$scriptsmain" -OutFile "Main.zip"
+            Invoke-WebRequest -Uri "$scriptsdev" -OutFile "Development.zip"
+
+            # Genero los archivos zips para guardar los zips de las ramas en las ubicaciones definidas.
+            # Para ello, realizo dos iteraciones.
+            Write-Host "Creando archivo zip!" -ForegroundColor Gray
+            foreach ($zip in $zips) {
+                foreach ($ubicacion in $ubicaciones) {
+                    Compress-Archive -LiteralPath $zips -DestinationPath $ubicacion -Update
+                }
             }
+
+            # Remuevo los archivos que ya no necesito.
+            Write-Host "Limpiando los archivos residuales!" -ForegroundColor Gray
+            Remove-Item $zips
+            TestCleaning
+
+            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            TestExistenceV2
         }
 
         '3' {
-            Clear-Host
-            Write-Host "隆Creando archivo zip!" -ForegroundColor Gray
-            Compress-Archive -Path "$minecraft" -DestinationPath "$parent\Zips\Lucas3.zip" -Update -CompressionLevel Optimal
-            Copy-Item "$parent\Zips\Lucas3.zip" -Destination "$liben\Lucas3.zip" -Force
+            # Defino las variables locales a utilizar.
+            $minecraft = "I:\Minecraft\Fabric\saves\Lucas3\"
+            $arch1 = "$onedrive\Lucas3.zip"
+            $arch2 = "$parent\Zips\Lucas3.zip"
 
-            if ( Test-Path -Path "$parent\Zips\Lucas3.zip", "$liben\Lucas3.zip" -PathType Leaf ) {
-                Write-Host "Operaci贸n completada exitosamente." -ForegroundColor Green
-            } else {
-                Write-Host "La operaci贸n no se pudo completar. Intente de nuevo." -ForegroundColor Red
-            }
+            # Limpio la pantalla.
+            Clear-Host
+
+            # Creo el archivo zip.
+            Write-Host "Creando archivo zip!" -ForegroundColor Gray
+            Compress-Archive -Path "$minecraft" -DestinationPath "$arch1" -Update -CompressionLevel Optimal
+            Copy-Item "$arch1" -Destination "$arch2" -Force
+
+            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            TestExistence
         }
 
         '4' {
-            Clear-Host
-            Write-Host "隆Creando archivo zip!" -ForegroundColor Gray
-            Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$parent\Zips\Black Ops III Mod Tools.zip" -Update -CompressionLevel Optimal
-            Copy-Item "$parent\Zips\Black Ops III Mod Tools.zip" -Destination "$liben\Black Ops III Mod Tools.zip" -Force
+            # Defino las variables locales a utilizar.
+            $bo3modtoolsmaps = "I:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\map_source\zm\"
+            $bo3modtoolsprefabs = "I:\SteamLibrary\steamapps\common\Call of Duty Black Ops III\map_source\_prefabs\Own Prefabs\"
+            $arch1 = "$onedrive\Black Ops III Mod Tools.zip"
+            $arch2 = "$parent\Zips\Black Ops III Mod Tools.zip"
 
-            if ( Test-Path -Path "$parent\Zips\Black Ops III Mod Tools.zip", "$liben\Black Ops III Mod Tools.zip" -PathType Leaf ) {
-                Write-Host "Operaci贸n completada exitosamente." -ForegroundColor Green
-            } else {
-                Write-Host "La operaci贸n no se pudo completar. Intente de nuevo." -ForegroundColor Red
-            }
+            # Limpio la pantalla.
+            Clear-Host
+
+            # Creo el archivo zip.
+            Write-Host "Creando archivo zip!" -ForegroundColor Gray
+            Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$arch1" -Update -CompressionLevel Optimal
+            Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$arch2" -Update -CompressionLevel Optimal
+            
+            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            TestExistence
         }
 
         '5' {
-            Clear-Host
-            Write-Host "隆Creando archivo zip!" -ForegroundColor Gray
-            Compress-Archive -LiteralPath "$mafia3" -DestinationPath "$parent\Zips\Mafia III Definitive Edition.zip" -Update -CompressionLevel Optimal
-            Copy-Item "$parent\Zips\Mafia III Definitive Edition.zip" -Destination "$liben\Mafia III Definitive Edition.zip" -Force
+            # Defino las variables locales a utilizar.
+            $mafia3 = "C:\Users\Lucas\AppData\Local\2K Games\Mafia III\"
+            $arch1 = "$onedrive\Mafia III Definitive Edition.zip"
+            $arch2 = "$parent\Zips\Mafia III Definitive Edition.zip"
 
-            if ( Test-Path -Path "$parent\Zips\Mafia III Definitive Edition.zip", "$liben\Mafia III Definitive Edition.zip" -PathType Leaf ) {
-                Write-Host "Operaci贸n completada exitosamente." -ForegroundColor Green
-            } else {
-                Write-Host "La operaci贸n no se pudo completar. Intente de nuevo." -ForegroundColor Red
-            }
+            # Limpio la pantalla.
+            Clear-Host
+
+            # Creo el archivo zip.
+            Write-Host "Creando archivo zip!" -ForegroundColor Gray
+            Compress-Archive -LiteralPath "$mafia3" -DestinationPath "$arch1" -Update -CompressionLevel Optimal
+            Compress-Archive -LiteralPath "$mafia3" -DestinationPath "$arch2" -Update -CompressionLevel Optimal
+
+            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            TestExistence
         }
     }
     
-    # Salgo de la secci贸n actual y limpio la pantalla.
+    # Salgo de la seccion actual y limpio la pantalla.
     Write-Host "Presione una tecla para salir." -ForegroundColor Yellow
     [void][System.Console]::ReadKey($FALSE)
     Clear-Host
  }
 
-<# Hasta que la opci贸n elegida sea 7 el script sigue funcionando. #>
+<# Hasta que la opcion elegida sea 6 el script sigue funcionando. #>
 until ($selection -eq '6')
 
 <# Credits
-鈥dam Bertram/adamtheautomator.com - Code to print a menu.
- (https://adamtheautomator.com/powershell-menu/)
-鈥dam Gordon/blog.itpro.tv - Code to get the time and date.
- (https://blog.itpro.tv/get-date-powershell-cmdlet/)
-鈥S64.com - Code to pause the script.
- (https://ss64.com/ps/pause.html)
-鈥ichael Pietroforte/4sysops.com - Code to download Internet files.
- (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
-鈥icrosoft Docs/PowerShell Community - Code to create a zip file from a directory, copy files, check if a file exists and to create variables.
- (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.1)
- (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1)
- (https://devblogs.microsoft.com/powershell-community/determine-if-a-folder-exists/)
- (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables?view=powershell-7.1)
-鈥helladmin/shellgeek.com - Code to get the current working directory.
- (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
-鈥ww.tutorialspoint.com - Code for if statements and to create or delete a directory.
- (https://www.tutorialspoint.com/powershell/if_else_statement_in_powershell.htm)
-鈥arim Buzdar/www.faqforge.com - Code to make comments.
- (https://www.faqforge.com/powershell/comment-code-powershell/)
+*Adam Bertram:
+    *adamtheautomator.com - Code to print a menu.
+        (https://adamtheautomator.com/powershell-menu/)
+    *4sysops.com - Information about errors in Powershell and how to deal with them.
+        (https://4sysops.com/archives/stop-or-exit-a-powershell-script-when-it-errors/)
+
+*MrPowerScripts/youtube.com - Parameter to print colored text with Write-Host.
+    (https://www.youtube.com/watch?v=xA7xGA6cwwQ)
+
+*Adam Gordon/blog.itpro.tv - Code to get the time and date.
+    (https://blog.itpro.tv/get-date-powershell-cmdlet/)
+
+*SS64.com - Code to pause the script.
+    (https://ss64.com/ps/pause.html)
+
+*Michael Pietroforte/4sysops.com - Code to download Internet files.
+    (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
+
+*Microsoft Docs/PowerShell Community:
+    *Code to compress archives.
+        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.1)
+    *Code to copy files.
+        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1)
+    *Code to check if a folder exists.
+        (https://devblogs.microsoft.com/powershell-community/determine-if-a-folder-exists/)
+    *Information about variables.
+        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables?view=powershell-7.1)
+    *Information about arrays.
+        (https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-arrays?view=powershell-7.2)
+    *Information about the "foreach" statement.
+        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_foreach?view=powershell-7.2)
+    *Information about logical operators.
+        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logical_operators?view=powershell-7.2)
+
+*shelladmin/shellgeek.com - Code to get the current working directory.
+    (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
+
+*www.tutorialspoint.com - Code for if statements and to create or delete a directory.
+    (https://www.tutorialspoint.com/powershell/if_else_statement_in_powershell.htm)
+
+*Karim Buzdar/www.faqforge.com - Code to make comments.
+    (https://www.faqforge.com/powershell/comment-code-powershell/)
+
+*The sites listed below - Ideas and knowledge to develop or rework some of the functions seen in this script:
+    *Stack Overflow - Users 'Anders', 'Jeff Zeitlin', 'Micky Balladelli'.
+        (https://stackoverflow.com/questions/49179807/test-path-on-an-array-and-return-values)
+        (https://stackoverflow.com/questions/56297149/if-test-path-path-detect-2-files-at-once)
+        (https://stackoverflow.com/questions/51010422/test-path-with-variable-foldername)
+    *Patrick Gruenauer/sid-500.com
+        (https://sid-500.com/2021/10/26/powershell-zip-multiple-folder-or-files-at-once-with-compress-archive/#respond)
+    *arcanecode/arcanecode.com
+        (https://arcanecode.com/2018/09/17/downloading-files-with-powershell-and-invoke-webrequest/)
 #>
