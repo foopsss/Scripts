@@ -5,7 +5,7 @@ $onedrive = "C:\Users\Lucas\OneDrive\Backups\Zips\"
 
 <# Defino las funciones globales a utilizar. #>
 function TestExistence {
-# Esta funci髇 chequea la existencia de los archivos que deber韆n ser guardados en la unidad USB y en OneDrive.
+# Esta funci贸n chequea la existencia de los archivos que deber铆an ser guardados en la unidad USB y en OneDrive.
     if ( (Test-Path -Path $arch1 -PathType Leaf) -and (Test-Path -Path $arch2 -PathType Leaf) ) {
         Write-Host "Operacion completada exitosamente." -ForegroundColor Green
     } else {
@@ -59,7 +59,7 @@ do
             Invoke-WebRequest -Uri "$hosts" -OutFile "$arch1"
             Invoke-WebRequest -Uri "$hosts" -OutFile "$arch2"
 
-            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            # Me aseguro de que la operaci贸n haya finalizado correctamente.
             TestExistence
         }
 
@@ -77,7 +77,7 @@ do
 
             # Defino las funciones locales a utilizar.
                 function TestCleaning {
-                # Esta funci髇 chequea que la limpieza de los archivos residuales haya sido exitosa.
+                # Esta funci贸n chequea que la limpieza de los archivos residuales haya sido exitosa.
                     if ( !( (Test-Path -Path "$zips[1]" -PathType Leaf) -and (Test-Path -Path "$zips[2]" -PathType Leaf) ) ) {
                         Write-Host "Limpieza completada!" -ForegroundColor Green
                     } else {
@@ -86,7 +86,7 @@ do
                 }
 
                 function TestExistenceV2 {
-                # Esta funci髇 chequea la existencia de los archivos que deber韆n ser guardados en la unidad USB y en OneDrive.
+                # Esta funci贸n chequea la existencia de los archivos que deber铆an ser guardados en la unidad USB y en OneDrive.
                     if ( ( (Test-Path -Path $arch1 -PathType Leaf) -and (Test-Path -Path $arch2 -PathType Leaf) ) -and (Test-Path -Path $arch3 -PathType Leaf) ) {
                         Write-Host "Operacion completada exitosamente." -ForegroundColor Green
                     } else {
@@ -116,7 +116,7 @@ do
             Remove-Item $zips
             TestCleaning
 
-            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            # Me aseguro de que la operaci贸n haya finalizado correctamente.
             TestExistenceV2
         }
 
@@ -134,7 +134,7 @@ do
             Compress-Archive -Path "$minecraft" -DestinationPath "$arch1" -Update -CompressionLevel Optimal
             Copy-Item "$arch1" -Destination "$arch2" -Force
 
-            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            # Me aseguro de que la operaci贸n haya finalizado correctamente.
             TestExistence
         }
 
@@ -153,7 +153,7 @@ do
             Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$arch1" -Update -CompressionLevel Optimal
             Compress-Archive -LiteralPath "$bo3modtoolsmaps", "$bo3modtoolsprefabs" -DestinationPath "$arch2" -Update -CompressionLevel Optimal
             
-            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            # Me aseguro de que la operaci贸n haya finalizado correctamente.
             TestExistence
         }
 
@@ -171,7 +171,7 @@ do
             Compress-Archive -LiteralPath "$mafia3" -DestinationPath "$arch1" -Update -CompressionLevel Optimal
             Compress-Archive -LiteralPath "$mafia3" -DestinationPath "$arch2" -Update -CompressionLevel Optimal
 
-            # Me aseguro de que la operaci髇 haya finalizado correctamente.
+            # Me aseguro de que la operaci贸n haya finalizado correctamente.
             TestExistence
         }
     }
@@ -234,8 +234,8 @@ until ($selection -eq '6')
         (https://stackoverflow.com/questions/49179807/test-path-on-an-array-and-return-values)
         (https://stackoverflow.com/questions/56297149/if-test-path-path-detect-2-files-at-once)
         (https://stackoverflow.com/questions/51010422/test-path-with-variable-foldername)
-    *Patrick Gruenauer/sid-500.com
+    *Patrick Gruenauer/sid-500.com.
         (https://sid-500.com/2021/10/26/powershell-zip-multiple-folder-or-files-at-once-with-compress-archive/#respond)
-    *arcanecode/arcanecode.com
+    *arcanecode/arcanecode.com.
         (https://arcanecode.com/2018/09/17/downloading-files-with-powershell-and-invoke-webrequest/)
 #>
