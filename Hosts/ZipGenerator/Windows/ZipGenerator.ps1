@@ -6,7 +6,7 @@ $updaterscript = "https://raw.githubusercontent.com/foopsss/Scripts/main/Hosts/Z
 $updatebinary = "https://raw.githubusercontent.com/foopsss/Scripts/main/Hosts/ZipGenerator/files/update-binary"
 $hosts = "https://raw.githubusercontent.com/foopsss/hosts/master/hosts-porn"
 
-<# Código. #>
+<# Codigo. #>
 
 # Cambio el directorio de trabajo al actual.
 Set-Location -Path "$wd"
@@ -21,9 +21,9 @@ Write-Host "Creando las carpetas necesarias..." -ForegroundColor Cyan
 New-Item -Path "$METAINF" -ItemType Directory -Force | Out-Null
 New-Item -Path "$system" -ItemType Directory -Force | Out-Null
 
-# Creo la función para chequear si las carpetas existen.
+# Creo la funcion para chequear si las carpetas existen.
 function TestExistence {
-# Esta función chequea la existencia de las carpetas que deberían ser generadas en el directorio.
+# Esta funcion chequea la existencia de las carpetas que deberian ser generadas en el directorio.
     if ( (Test-Path -Path $METAINF) -and (Test-Path -Path $system) ) {
         Write-Host "Operacion completada exitosamente." -ForegroundColor Green
     } else {
@@ -36,14 +36,14 @@ TestExistence
 Write-Host ""
     
 # Descargo los archivos necesarios.
-Write-Host "Descargando los archivos más nuevos..." -ForegroundColor Cyan
+Write-Host "Descargando los archivos mas nuevos..." -ForegroundColor Cyan
 Invoke-WebRequest -Uri "$updaterscript" -OutFile "$METAINF\updater-script"
 Invoke-WebRequest -Uri "$updatebinary" -OutFile "$METAINF\update-binary"
 Invoke-WebRequest -Uri "$hosts" -OutFile "$system\hosts"
 
-# Creo la función para chequear si los archivos existen.
+# Creo la funcion para chequear si los archivos existen.
 function TestExistenceV2 {
-# Esta función chequea la existencia de los archivos que deberían ser generados en el directorio.
+# Esta funcion chequea la existencia de los archivos que deberian ser generados en el directorio.
     if ( ( (Test-Path -Path "$METAINF\updater-script" -PathType Leaf) -and (Test-Path -Path "$METAINF\update-binary" -PathType Leaf) ) -and (Test-Path -Path "$system\hosts" -PathType Leaf) ) {
         Write-Host "Operacion completada exitosamente." -ForegroundColor Green
     } else {
@@ -56,9 +56,9 @@ TestExistenceV2
 Write-Host ""
 
 # Indico los pasos a seguir a continuacion.
-Write-Host "Debido a problemas en el proceso de generación de archivos zip de Powershell, estos no se pueden usar para flashear archivos en Android."
+Write-Host "Debido a problemas en el proceso de generacion de archivos zip de Powershell, estos no se pueden usar para flashear archivos en Android."
 Write-Host
-Write-Host "Por favor, seleccione las carpetas 'META-INF' y 'system' generadas por el script en su ubicación actual, y comprimalas utilizando alguna herramienta como WinRAR o 7-Zip."
+Write-Host "Por favor, seleccione las carpetas 'META-INF' y 'system' generadas por el script en su ubicacion actual, y comprimalas utilizando alguna herramienta como WinRAR o 7-Zip."
 Write-Host
 Write-Host "Gracias, y disculpe las molestias."
 Write-Host
