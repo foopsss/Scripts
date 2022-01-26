@@ -1,28 +1,29 @@
-# Declaro el intérprete a utilizar
+# ACLARACIÓN:
+# Las funciones resize_window, Línea e YT son funciones importadas del archivo Functions.sh.
+# El funcionamiento de estas se encuentra explicado ahí.
 
+# Declaro el intérprete a utilizar.
 #!/bin/bash
 
-# Defino propiedades de la ventana
-
-resize -s 33 110 > /dev/null
-
-# Importo funciones de otro archivo
+# Importo funciones de otro archivo.
 source Functions.sh
 
-# Limpio la pantalla de la terminal
+# Defino propiedades de la ventana.
+resize_window
+
+# Limpio la pantalla de la terminal.
 clear
 
-# Defino los cŕeditos del script
-
-echo "-------------------------------------------------------------------------------------------------------"
+# Defino los cŕeditos del script.
+Línea
 echo "CREDITS                                                                                                "
-echo "-------------------------------------------------------------------------------------------------------"
+Línea
 echo
 echo "[•] techstop.github.io - User 'GameTheory' - Tutorial that helped me when starting with Bash."
 YT "    (https://techstop.github.io/menu-bash-script/)"
 echo
-echo "[•] Stack Overflow - User 'plhn' - Code to resize a terminal window."
-YT "    (https://stackoverflow.com/questions/5243445/bash-command-to-change-size-of-bash-window)"
+echo "[•] Ask Different - User 'Chris Page' - Code to resize a terminal window through Xterm Control Sequences."
+YT "    (https://apple.stackexchange.com/questions/33736/can-a-terminal-window-be-resized-with-a-terminal-command)"
 echo
 echo "[•] Stack Overflow - User 'Jeff Bowman' - Code to hide command output."
 YT "    (https://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash)"
@@ -66,4 +67,7 @@ YT "    (https://unix.stackexchange.com/questions/192042/how-do-i-suppress-error
 echo
 echo "[•] ShellHacks - ANSI color codes to colorize text."
 YT "    (https://www.shellhacks.com/bash-colors/)"
+echo
+echo "[•] Linux.com - User 'Jack Wallen' - Command to run Flatpak apps."
+YT "    (https://www.linux.com/training-tutorials/how-install-and-use-flatpak-linux/)"
 echo
