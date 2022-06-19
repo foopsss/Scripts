@@ -69,41 +69,6 @@ Write-Host "Presione una tecla para salir." -ForegroundColor Yellow
 EXIT
 
 <# Credits
-*shelladmin/shellgeek.com - Code to get the current working directory.
- (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
-
-*www.tutorialspoint.com:
-    *Code to create folders.
-        (https://www.tutorialspoint.com/powershell/powershell_files_create_folders.htm)
-    *Code to delete folders.
-        (https://www.tutorialspoint.com/powershell/powershell_files_delete_folders.htm)
-
-*Stack Overflow - User 'ChiliYago' - Code to hide console output using Out-Null and the pipeline.
- (https://stackoverflow.com/questions/46586382/hide-powershell-output)
-
-*Michael Pietroforte/4sysops.com - Code to download Internet files.
- (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
-
-*Microsoft Docs/PowerShell Community:
-    *Code to change a script working directory.
-        (https://docs.microsoft.com/en-us/powershell/scripting/samples/managing-current-location?view=powershell-7.2)
-    *Code to force directory creation with New-Item.
-        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-item?view=powershell-7.2)
-    *Code for if statements.
-        (https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-if?view=powershell-7.2)
-    *Code to use Test-Path.
-        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/test-path?view=powershell-7.2)
-
-*SS64.com - Code to pause the script.
- (https://ss64.com/ps/pause.html)
-
-*Karim Buzdar/www.faqforge.com - Code to make comments.
- (https://www.faqforge.com/powershell/comment-code-powershell/)
-
-*Dejan Mladenovic/www.improvescripting.com - Instructions to debug code in Powershell ISE.
- (https://www.improvescripting.com/how-to-debug-powershell-scripts/)
-
-*The sites listed below - Ideas and knowledge to develop or rework some of the functions seen in this script:
-    *Stack Overflow - User 'Jeff Zeitlin'.
-        (https://stackoverflow.com/questions/56297149/if-test-path-path-detect-2-files-at-once)
+* Stack Overflow - User 'Jeff Zeitlin' - Ideas and knowledge to develop or rework some of the functions seen in this script.
+  (https://stackoverflow.com/questions/56297149/if-test-path-path-detect-2-files-at-once)
 #>

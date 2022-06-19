@@ -4,7 +4,7 @@
 # Defino las funciones a utilizar en otros archivos.
 resize_window() {
 	# Esta función utiliza una secuencia para definir el tamaño de la ventana.
-	printf '\e[8;33;105t'
+	printf '\e[8;33;104t'
 }
 export -f resize_window
 

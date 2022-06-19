@@ -16,24 +16,32 @@ menu_option_one() {
 	# Borro el contenido de la terminal.
 	clear
 
-	# Imprimo el texto.
+	# Imprimo el texto a mostrar por pantalla.
 	Línea
 	echo "Introduzca en el campo correspondiente la ID de la aplicación cuya ruta quiere averiguar."
 	Línea
 
-	# Tomo una ID introducida por el usuario, y la uso para ejecutar el comando y guardar la lista.
+	# Tomo una ID introducida por el usuario.
 	echo -n "ID de la aplicación: "
 	read ID
-	NV "$ID"
-	echo
-	{
-		# Defino una variable como la salida de un comando.
-		IDPATH=$(adb shell pm path $ID)
+	
+	# Chequeo si la variable 'ID' contiene algún valor o no.
+	if [ -z $ID ]
+	then
+		# Si la variable no recibe ningún valor, se utiliza la función NV (Null Value) para informar al usuario y abortar la operación.
+		NV "$ID"
+	else
+		# Si la variable recibe un valor, muestro por pantalla la ruta de la aplicación solicitada.
+		echo
+		{
+			# Defino la variable 'IDPATH' como la salida de un comando.
+			IDPATH=$(adb shell pm path $ID)
 
-		# Con la variable definida, la muestro coloreada con una función.
-		echo "La ruta de la aplicación indicada es: "
-		YBT "${IDPATH}"
-	} 2>/dev/null
+			# Con la variable 'IDPATH' definida, la muestro coloreada con una función.
+			echo "La ruta de la aplicación indicada es: "
+			YBT "${IDPATH}"
+		} 2>/dev/null
+	fi
 }
 
 menu_option_two() {
@@ -43,7 +51,7 @@ menu_option_two() {
 	# Borro el contenido de la terminal.
 	clear
 
-	# Imprimo el texto.
+	# Imprimo el texto a mostrar por pantalla.
 	Línea
 	echo "A continuación, obtendrá una lista de las aplicaciones instaladas en su dispositivo tanto por el"
 	echo "fabricante como por usted mismo. Los directorios escaneados son system/app, /priv-app/ y data/app."
@@ -53,13 +61,13 @@ menu_option_two() {
 	Línea
 
 	# Luego de una pausa, rota por el usuario a voluntad, se ejecuta el comando y se guarda la lista.
-	# En caso negativo, se esconde el código de error para imprimir un texto personalizado que lo reemplace.
+	# De no poder generarse la lista, se esconde el código de error para imprimir un texto personalizado que lo reemplace.
 	read -n1
 	{
 		adb shell pm list packages -f > $Apps
 	} 2>/dev/null
 
-	# Chequeo si existe el archivo, y, si existe, ofrezco la opción de poder abrirlo directamente.
+	# Chequeo si existe la lista, y, si existe, ofrezco la opción de poder abrirla directamente.
 	OIE "$Apps"
 }
 
@@ -70,7 +78,7 @@ menu_option_three() {
 	# Borro el contenido de la terminal.
 	clear
 
-	# Imprimo el texto.
+	# Imprimo el texto a mostrar por pantalla.
 	Línea
 	echo "A continuación, obtendrá una lista de las aplicaciones de su dispositivo que se encuentran suprimidas."
 	echo
@@ -78,14 +86,14 @@ menu_option_three() {
 	echo "su carpeta Documentos, ya que será extensa."
 	Línea
 
-	# Luego de una pausa, rota por el usuario a voluntad, se ejecuta el comando y se guarda la lista.
-	# En caso negativo, se esconde el código de error para imprimir un texto personalizado que lo reemplace.
+	# Luego de una pausa, rota por el usuario a voluntad, se ejecuta el comando y se genera la lista.
+	# De no poder generarse la lista, se esconde el código de error para imprimir un texto personalizado que lo reemplace.
 	read -n1
 	{
 		adb shell pm list packages -d -f > $AppsDes
 	} 2>/dev/null
 
-	# Chequeo si existe el archivo, y, si existe, ofrezco la opción de poder abrirlo directamente.
+	# Chequeo si existe la lista, y, si existe, ofrezco la opción de poder abrirla directamente.
 	OIE "$AppsDes"
 }
 
@@ -96,7 +104,7 @@ menu_option_four() {
 	# Borro el contenido de la terminal.
 	clear
 
-	# Imprimo el texto.
+	# Imprimo el texto a mostrar por pantalla.
 	Línea
 	echo "Introduzca en el campo correspondiente alguna palabra que quiera utilizar para poder identificar el ID"
 	echo "de alguna aplicación, junto con su ruta."
@@ -105,18 +113,26 @@ menu_option_four() {
 	echo "estar vacío el archivo, es porque no se encontró nada y deberá probar con otra clave."
 	Línea
 
-	# Tomo una palabra clave introducida por el usuario, y la uso para ejecutar el comando y guardar la lista.
-	# En caso negativo, se esconde el código de error para imprimir un texto personalizado que lo reemplace.
+	# Tomo una palabra clave introducida por el usuario.
 	echo -n "Palabra clave: "
 	read clave
-	NV "$clave"
-	echo
-	{
-		adb shell pm list packages -f $clave > $AppsClave
-	} 2>/dev/null
-
-	# Chequeo si existe el archivo, y, si existe, ofrezco la opción de poder abrirlo directamente.
-	OIE "$AppsClave"
+	echo 
+	
+	# Chequeo si la variable 'clave' contiene algún valor o no.
+	if [ -z $clave ]
+	then
+		# Si la variable no recibe ningún valor, se utiliza la función NV (Null Value) para informar al usuario y abortar la operación.
+		NV "$clave"
+	else
+		# Si la variable recibe un valor, ejecuto el comando y genero la lista.
+		# De no poder generarse la lista, se esconde el código de error para imprimir un texto personalizado que lo reemplace.
+		{
+			adb shell pm list packages -f $clave > $AppsClave
+		} 2>/dev/null
+		
+		# Chequeo si existe la lista, y, si existe, ofrezco la opción de poder abrirla directamente.
+		OIE "$AppsClave"
+	fi
 }
 
 # Defino el menú de selección de opciones.
@@ -125,7 +141,7 @@ do
 	# Borro el contenido de la terminal. 
 	clear
 
-	# Imprimo el menú.
+	# Imprimo el menú a mostrar por pantalla.
 	Línea
 	echo "En este apartado, usted podrá optar por obtener cierta información de las aplicaciones instaladas en su"
 	echo "dispositivo."

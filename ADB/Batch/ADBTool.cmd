@@ -617,6 +617,57 @@ IF !CHOICE!==4 GOTO MENU
     IF /I !CHOICE!==S GOTO CUSTCOMM
     IF /I !CHOICE!==N GOTO EXTRA
 
+:CREDITS
+CLS
+MODE 112,45
+ECHO.
+ECHO -------------------------------------------------------------------------------------------------------
+ECHO CREDITS
+ECHO -------------------------------------------------------------------------------------------------------
+ECHO.
+ECHO This was made thanks to these fine people:
+ECHO.
+ECHO [*] SevenForums - User "not so gray matter" - Tutorial that helped me when starting with Batch.
+ECHO     (https://www.sevenforums.com/tutorials/78083-batch-files-create-menu-execute-commands.html)
+ECHO.
+ECHO [*] TutorialsPoint - Code to make comments.
+ECHO     (https://www.tutorialspoint.com/batch_script/batch_script_comments.htm)
+ECHO.
+ECHO [*] ServerFault - User "jftuga" - Code to turn off echo-ing.
+ECHO     (https://serverfault.com/questions/187355/dont-show-batch-file-command-when-execute-it)
+ECHO.
+ECHO [*] TutorialsPoint - Code to change window title.
+ECHO     (https://www.tutorialspoint.com/batch_script/batch_script_title.htm)
+ECHO.
+ECHO [*] Computer Hope - Code to change window color.
+ECHO     (https://www.computerhope.com/color.htm)
+ECHO.
+ECHO [*] StackOverFlow - User "TechnoCraft" - Code to resize window.
+ECHO     (https://stackoverflow.com/questions/8688846/resize-command-prompt-through-commands)
+ECHO.
+ECHO [*] Rob van der Woude - Code to check for allowed versions, to enable delayed variable expansion,
+ECHO     and to check for the availability of ADB.
+ECHO     (https://www.robvanderwoude.com/battech_debugging.php)
+ECHO     (https://www.robvanderwoude.com/battech_inputvalidation_setp.php)
+ECHO     (https://www.robvanderwoude.com/autodownload.php)
+ECHO.
+ECHO [*] StackOverFlow - User "PA." - Code to ignore case sensitivity in variables.
+ECHO     (https://stackoverflow.com/questions/8759433/windows-batch-command-to-ignore-case-sensitivity-in-variables)
+ECHO.
+ECHO [*] StackOverFlow - User "user3647205" - Code to save console output to a text file.
+ECHO     (https://stackoverflow.com/questions/34617211/batch-file-out-put-to-both-console-and-text)
+ECHO.
+ECHO [*] StackOverFlow - User "stuartd" - Code to check if a file exists.
+ECHO     (https://stackoverflow.com/questions/3022176/how-to-verify-if-a-file-exists-in-a-batch-file)
+ECHO.
+ECHO [*] StackOverFlow - User "Recon" - Environment variable to get the current user profile.
+ECHO     (https://stackoverflow.com/questions/1607271/how-do-you-find-the-current-user-in-a-windows-environment)
+ECHO.
+pause
+CLS
+MODE 105,38
+GOTO MENU
+
 :EXIT
 adb kill-server
 exit

@@ -186,49 +186,6 @@ do
 until ($selection -eq '6')
 
 <# Credits
-*Adam Bertram:
-    *adamtheautomator.com - Code to print a menu.
-        (https://adamtheautomator.com/powershell-menu/)
-    *4sysops.com - Information about errors in Powershell and how to deal with them.
-        (https://4sysops.com/archives/stop-or-exit-a-powershell-script-when-it-errors/)
-
-*MrPowerScripts/youtube.com - Parameter to print colored text with Write-Host.
-    (https://www.youtube.com/watch?v=xA7xGA6cwwQ)
-
-*Adam Gordon/blog.itpro.tv - Code to get the time and date.
-    (https://blog.itpro.tv/get-date-powershell-cmdlet/)
-
-*SS64.com - Code to pause the script.
-    (https://ss64.com/ps/pause.html)
-
-*Michael Pietroforte/4sysops.com - Code to download Internet files.
-    (https://4sysops.com/archives/use-powershell-to-download-a-file-with-http-https-and-ftp/)
-
-*Microsoft Docs/PowerShell Community:
-    *Code to compress archives.
-        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.1)
-    *Code to copy files.
-        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item?view=powershell-7.1)
-    *Code to check if a folder exists.
-        (https://devblogs.microsoft.com/powershell-community/determine-if-a-folder-exists/)
-    *Information about variables.
-        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables?view=powershell-7.1)
-    *Information about arrays.
-        (https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-arrays?view=powershell-7.2)
-    *Information about the "foreach" statement.
-        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_foreach?view=powershell-7.2)
-    *Information about logical operators.
-        (https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logical_operators?view=powershell-7.2)
-
-*shelladmin/shellgeek.com - Code to get the current working directory.
-    (https://shellgeek.com/how-to-get-current-directory-full-path-in-powershell/)
-
-*www.tutorialspoint.com - Code for if statements and to create or delete a directory.
-    (https://www.tutorialspoint.com/powershell/if_else_statement_in_powershell.htm)
-
-*Karim Buzdar/www.faqforge.com - Code to make comments.
-    (https://www.faqforge.com/powershell/comment-code-powershell/)
-
 *The sites listed below - Ideas and knowledge to develop or rework some of the functions seen in this script:
     *Stack Overflow - Users 'Anders', 'Jeff Zeitlin', 'Micky Balladelli'.
         (https://stackoverflow.com/questions/49179807/test-path-on-an-array-and-return-values)

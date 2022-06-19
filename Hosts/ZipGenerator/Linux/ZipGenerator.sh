@@ -124,30 +124,3 @@ echo
 
 # Cierro el script.
 ExitScript
-
-# Cŕeditos.
-<< 'CREDITS'
-•Stack Overflow - User 'plhn' - Code to resize a terminal window.
- (https://stackoverflow.com/questions/5243445/bash-command-to-change-size-of-bash-window)
-•DevQA - User 'Amir Ghahrai' - Code to create and call functions.
- (https://devqa.io/create-call-bash-functions/)
-•ShellHacks - ANSI color codes to colorize text.
- (https://www.shellhacks.com/bash-colors/)
-•Ryan's Tutorials/ryanstutorials.net - Code to make if statements and some information about operators.
- (https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php)
-•EdXD/bytexd.com - Code to make a folder and additional options.
- (https://bytexd.com/mkdir-command-create-directories/)
-•Stack Overflow - User 'Jim' - Code to pause the console using read.
- (https://stackoverflow.com/questions/92802/what-is-the-linux-equivalent-to-dos-pause)
-•Unix & Linux Stack Exchange - User 'John' - Code to suppress error messages.
- (https://unix.stackexchange.com/questions/192042/how-do-i-suppress-error-messages-from-cp)
-•The sites listed below - Code to use wget and info about its exit status.
- •GeeksforGeeks/www.geeksforgeeks.org.
-  (https://www.geeksforgeeks.org/wget-command-in-linux-unix/)
- •Stack Overflow - User 'RPradeep'
-  (https://stackoverflow.com/questions/1078524/how-to-specify-the-download-location-with-wget)
- •The GNU Operating System and the Free Software Movement/www.gnu.org.
-  (https://www.gnu.org/software/wget/manual/html_node/Exit-Status.html)
-•nixCraft - User 'Vivek Gite' - Code to remove a folder using rm.
- (https://www.cyberciti.biz/tips/find-out-if-file-exists-with-conditional-expressions.html)
-CREDITS
