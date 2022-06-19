@@ -5,7 +5,7 @@ Here I store some scripts[^1] I made thanks to the Internet community that I'd l
 * In the **Automatización** folder, there are some shell scripts I use to automate tasks on my Fedora Silverblue system.
   * *Actualizaciones* is a script that automates software updates, updating the base image, Flatpak apps and my container.
   * *Atajos* is a script that is part of the *Setup.sh* script and sets my GNOME shortcuts.
-  * *Contenedor* is a script that creates a [Toolbox](https://github.com/containers/toolbox) container, updates it, and installs some programs.
+  * *Contenedor* is a script that is part of the *Setup.sh* script and creates a [Toolbox](https://github.com/containers/toolbox) container, updates it, and installs some programs.
   * *Setup* is a script that carries out most of the stuff I'd usually do after a fresh install of Fedora Silverblue.
 * In the **Backups** folder, there's a Windows (Powershell) command-line appliance to make backups of some things I regularly use. It's very specific to my computer.
 * In the **Calibri** folder, there's a shell script to install the Calibri font family for the local user. However, the font files **are not included**. It can easily be tweaked for other font families.
