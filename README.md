@@ -3,7 +3,7 @@ Here I store some scripts[^1] I made thanks to the Internet community that I'd l
 
 * In the **ADB** folder, there's a command-line appliance I made both for Windows (Batch) and GNU/Linux (Shell) that aims to simplify the use of ADB and Fastboot. This tool is currently being reworked for both operating systems to make code more readable and better, where possible.
 * In the **Automatización** folder, there are some shell scripts I use to automate tasks on my Fedora Silverblue system.
-  * *Actualizaciones* is a script that automates software updates, updating the base image, Flatpak apps and my [Toolbox](https://github.com/containers/toolbox) container.
+  * *Actualizaciones* is a script that automates software updates, updating the base image, Flatpak apps, and my [Toolbox](https://github.com/containers/toolbox) container.
   * *Atajos* is a script that is part of the *Setup.sh* script and sets my GNOME shortcuts.
   * *Contenedor* is a script that is part of the *Setup.sh* script and creates a Toolbox container, updates it, and installs some programs.
   * *Setup* is a script that carries out most of the stuff I'd usually do after a fresh install of Fedora Silverblue.
