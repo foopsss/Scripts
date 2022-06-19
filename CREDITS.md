@@ -1,8 +1,8 @@
-I must thank the following people for the knowledge and help they've given me when making all of these scripts. Credits are organized by programming language. If there's someone I missed, please, let me know.
+I must thank the following people for the knowledge and help they've given me when making all of these scripts. Credits are organized by script language. If there's someone I missed, please, let me know.
 
 Also, please note that some individual credits aren't included here, such as those that may be very specific to a script, so they are included in their respective pieces of code.
 
-# Bash 
+# Shell 
 <details>
   <summary>Click here to expand the list!</summary>
  
@@ -50,6 +50,7 @@ Also, please note that some individual credits aren't included here, such as tho
   * User "gudok" - Code to import functions from a different file: https://stackoverflow.com/questions/36829997/how-to-import-shell-functions-from-one-file-into-another.
   * User "chris01" - Code to check if a file exists: https://stackoverflow.com/questions/40082346/how-to-check-if-a-file-exists-in-a-shell-script.
   * User "RPradeep" - Parameter to specify the download location on wget: https://stackoverflow.com/questions/1078524/how-to-specify-the-download-location-with-wget.
+  * User "Saftever" - Usage of unzip: https://stackoverflow.com/questions/7132514/bash-how-to-unzip-a-piped-zip-file-from-wget-qo/.
 
 * TecAdmin Tutorials:
   * Code to make comments: https://tecadmin.net/tutorial/bash-comments.
@@ -66,6 +67,7 @@ Also, please note that some individual credits aren't included here, such as tho
   
 * Unix & Linux Stack Exchange:
   * User "John" - Code to suppress error messages: https://unix.stackexchange.com/questions/192042/how-do-i-suppress-error-messages-from-cp.
+  * User "annahri" - Ways to append text to a file: https://unix.stackexchange.com/questions/567531/ways-to-append-text-to-a-file.
 
 </details>
 
