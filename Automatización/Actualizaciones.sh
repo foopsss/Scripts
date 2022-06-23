@@ -46,7 +46,7 @@ comandos () {
     # Actualizo los paquetes del contenedor.
     GBT "Actualizando los paquetes del contenedor."
     toolbox run -c lucas sudo dnf -y update
-    read -n1 -t3
+    read -n1
     
     # Limpio la pantalla.
     clear
