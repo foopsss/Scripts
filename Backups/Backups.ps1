@@ -122,7 +122,7 @@ do
 
         '3' {
             # Defino las variables locales a utilizar.
-            $minecraft = "I:\Minecraft\Fabric\saves\Lucas3\"
+            $minecraft = "I:\Minecraft\Instalaciones\Fabric\saves\Lucas3\"
             $arch1 = "$onedrive\Lucas3.zip"
             $arch2 = "$parent\Zips\Lucas3.zip"
 

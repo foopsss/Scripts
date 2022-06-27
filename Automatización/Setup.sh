@@ -78,18 +78,25 @@ echo 'export PATH=${PATH}:/var/home/$USER/Documentos/platform-tools' >> /var/hom
 wget https://ftp.hp.com/pub/softlib/software13/printers/CLP150/uld-hp_V1.00.39.12_00.15.tar.gz -O /var/home/$USER/Descargas/DriversHP.tar.gz
 unzip -d /var/home/$USER/Descargas /var/home/$USER/Descargas/DriversHP.tar.gz
 
-# Descargo mis archivos de configuración para Sway y Waybar.
+# Descargo mis archivos de configuración para Sway, Waybar y los demás componentes necesarios.
 
 	# Configuración de Sway.
-	wget https://raw.githubusercontent.com/foopsss/Dotfiles/main/Sway/config -O /var/home/lucas/.config/sway/config
+	mkdir /var/home/$USER/.config/sway/
+	wget https://raw.githubusercontent.com/foopsss/Dotfiles/main/Sway/config -O /var/home/$USER/.config/sway/config
 	
 	# Configuración de Waybar.
-	wget https://raw.githubusercontent.com/foopsss/Dotfiles/main/Waybar/config -O /var/home/lucas/.config/waybar/config
-	wget https://raw.githubusercontent.com/foopsss/Dotfiles/main/Waybar/style.css -O /var/home/lucas/.config/waybar/style.css
+	mkdir /var/home/$USER/.config/waybar/
+	wget https://raw.githubusercontent.com/foopsss/Dotfiles/main/Waybar/config -O /var/home/$USER/.config/waybar/config
+	wget https://raw.githubusercontent.com/foopsss/Dotfiles/main/Waybar/style.css -O /var/home/$USER/.config/waybar/style.css
 
-	# Rofi (Menú de aplicaciones).
+	# Configuración de Rofi.
 	# Fuente: https://github.com/davatorium/rofi-themes/tree/master/User%20Themes
+	mkdir /var/home/$USER/.config/rofi/
 	wget https://raw.githubusercontent.com/davatorium/rofi-themes/master/User%20Themes/flat-orange.rasi -O /var/home/$USER/.config/rofi/config.rasi
+	
+	# Configuración de Mako.
+	mkdir /var/home/$USER/.config/mako/
+	wget https://raw.githubusercontent.com/foopsss/Dotfiles/main/Mako/config -O /var/home/$USER/.config/mako/config
 
 # Descargo GeoGebra.
 # wget download.geogebra.org/package/linux-port6 -O /var/home/$USER/Descargas/GeoGebra.zip
